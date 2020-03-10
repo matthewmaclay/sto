@@ -1,3 +1,5 @@
+const plugins = require('./plugins')
+
 let contentfulConfig
 try {
   contentfulConfig = require('./.contentful')
@@ -15,10 +17,10 @@ try {
     throw new Error('Contentful space ID and access token need to be provided.')
   }
 }
-
+console.log('!!!!!!!', plugins)
 module.exports = {
   siteMetadata: {
-    title: 'GCN',
+    title: 'AUTOHOF 24',
     description:
       'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
     siteUrl: 'https://gcn.netlify.com',
@@ -42,6 +44,7 @@ module.exports = {
     basePath: '/',
   },
   plugins: [
+    ...plugins,
     `gatsby-plugin-emotion`,
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-react-helmet',

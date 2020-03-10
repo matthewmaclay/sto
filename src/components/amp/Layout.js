@@ -1,8 +1,34 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import styled from '@emotion/styled'
+import { Global } from '@emotion/core'
+import { globalStyles } from 'styles/globalStyles.js'
 
-const SEO = ({ title, description, image, children }) => {
+const Root = styled.div`
+  font-family: ${props => props.theme.fonts.body};
+`
+
+const Skip = styled.a`
+  font-family: ${props => props.theme.fonts.body};
+  padding: 0 1rem;
+  line-height: 60px;
+  background: #2867cf;
+  color: white;
+  z-index: 101;
+  position: fixed;
+  top: -100%;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus,
+  &:active,
+  &:hover {
+    top: 0;
+  }
+`
+
+const Layout = ({ title, description, image, children }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,7 +52,8 @@ const SEO = ({ title, description, image, children }) => {
     <>
       <Helmet
         htmlAttributes={{
-          lang: `en`,
+          lang: `ru`,
+          amp: true,
         }}
         title={title}
         defaultTitle={site.siteMetadata.title}
@@ -34,24 +61,15 @@ const SEO = ({ title, description, image, children }) => {
       >
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* General tags */}
-        <meta name="image" content={image} />
-        <meta name="description" content={metaDescription} />
-
-        {/* OpenGraph tags */}
-        <meta property="og:title" content={title} />
-        <meta property="og:image" content={metaImage} />
-        <meta property="og:description" content={metaDescription} />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:image" content={metaImage} />
-        <meta name="twitter:description" content={metaDescription} />
-      </Helmet>
-      {children}
+      </Helmet>{' '}
+      <Root className="siteRoot">
+        <div className="siteContent">
+          <div id="main">{children}</div>
+        </div>
+        <Global styles={globalStyles} />
+      </Root>
     </>
   )
 }
 
-export default SEO
+export default Layout
