@@ -24,6 +24,7 @@ module.exports = {
       'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
     siteUrl: 'https://gcn.netlify.com',
     image: '/images/share.jpg',
+    basePath: '/old',
     menuLinks: [
       {
         name: 'Home',
@@ -43,6 +44,7 @@ module.exports = {
     basePath: '/',
   },
   plugins: [
+    ...plugins,
     `gatsby-plugin-emotion`,
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-react-helmet',
