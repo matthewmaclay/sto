@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
-import PageTitle from '../components/PageTitle'
-import Container from '../components/Container'
-import Layout from '../components/Layout'
-import Header from '../components/Header'
-
+import PageTitle from 'components/PageTitle'
+import Container from 'components/Container'
+import Layout from 'components/Layout'
+import Header from 'components/Header'
+import Example from 'components/Example'
 
 const Text = styled.p`
   text-align: center;
@@ -18,15 +18,13 @@ const Text = styled.p`
 const homePage = ({ data }) => {
   return (
     <Layout>
-			<Header>
-				<PageTitle>Автосервис на Нарвской</PageTitle>
-			</Header>
-      <Container>
-      </Container>
+      <Header>
+        <PageTitle>Автосервис на Нарвской</PageTitle>
+      </Header>
+      <Example />
+      <Container></Container>
     </Layout>
   )
 }
-
-
 
 export default homePage

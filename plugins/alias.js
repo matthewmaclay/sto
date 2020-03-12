@@ -3,6 +3,7 @@ module.exports = {
   options: {
     alias: {
       components: 'src/components',
+      containers: 'src/containers',
       styles: 'src/styles',
     },
     extensions: [],

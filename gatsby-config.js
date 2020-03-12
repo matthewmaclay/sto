@@ -16,8 +16,7 @@ try {
   if (!spaceId || !accessToken) {
     throw new Error('Contentful space ID and access token need to be provided.')
   }
-}
-console.log('!!!!!!!', plugins)
+
 module.exports = {
   siteMetadata: {
     title: 'AUTOHOF 24',
