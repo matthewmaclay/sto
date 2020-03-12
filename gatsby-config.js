@@ -12,10 +12,10 @@ try {
   }
 } finally {
   const { spaceId, accessToken } = contentfulConfig.production
-  console.log(contentfulConfig)
   if (!spaceId || !accessToken) {
     throw new Error('Contentful space ID and access token need to be provided.')
   }
+}
 
 module.exports = {
   siteMetadata: {
@@ -43,7 +43,6 @@ module.exports = {
     basePath: '/',
   },
   plugins: [
-    ...plugins,
     `gatsby-plugin-emotion`,
     'gatsby-plugin-theme-ui',
     'gatsby-plugin-react-helmet',
