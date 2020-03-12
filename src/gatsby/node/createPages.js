@@ -25,16 +25,6 @@ module.exports = async ({ graphql, actions }) => {
         next,
       },
     })
-
-    createPage({
-      path: `${basePath === '/' ? '' : basePath}/${post.node.slug}/amp/`,
-      component: path.resolve(`./src/templates/amp/post.js`),
-      context: {
-        slug: post.node.slug,
-        prev,
-        next,
-      },
-    })
   })
 
   // Create a page containing all "posts" and paginate.
