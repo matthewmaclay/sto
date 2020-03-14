@@ -21,7 +21,10 @@ const Nav = styled.nav`
       background: black;
   `}
   width: 100%;
-  padding: 0 ${props => props.theme.sizes.containerPadding};
+  padding: 12px;
+  ${media.s} {
+    padding: 60px;
+  }
   margin: 0 auto;
   display: flex;
   justify-content: space-between;

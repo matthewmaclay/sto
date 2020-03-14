@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import styled from '@emotion/styled'
+import media from 'utils/media'
 
 const Wrapper = styled.section`
   position: relative;
@@ -12,7 +13,11 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 60px;
+  padding: 12px;
+  ${media.s} {
+    padding: 60px;
+  }
+
   position: absolute;
   top: 0;
   left: 0;
@@ -25,6 +30,7 @@ const BgImg = styled(Img)`
   position: absolute;
   width: 100%;
   height: 100%;
+  min-height: 300px;
   &::before {
     content: '';
     background: rgba(0, 0, 0, 0.7);
