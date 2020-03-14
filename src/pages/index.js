@@ -6,6 +6,7 @@ import SEO from 'components/SEO'
 
 import Why from 'containers/Why'
 import Hero from 'containers/Hero'
+import Info from 'containers/Info'
 import Services from 'containers/Services'
 
 const Contact = ({
@@ -29,6 +30,7 @@ const Contact = ({
       </Hero>
       <Why />
       <Services />
+      <Info />
     </Layout>
   )
 }
