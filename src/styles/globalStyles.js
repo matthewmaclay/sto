@@ -265,6 +265,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 */
   .bm-menu-wrap {
     position: fixed;
+    top: 0;
     height: 100%;
   }
 
