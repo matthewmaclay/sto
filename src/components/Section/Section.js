@@ -10,7 +10,8 @@ const SWrapper = styled.div`
   ${media.m} {
     padding: ${props => !props.withoutPadding && props.theme.sectionPaddings.m};
   }
+  background: ${props => (props.black ? props.theme.colors.dark100 : 'white')};
 `
-export default function Section({ children, withoutPadding }) {
-  return <SWrapper withoutPadding={withoutPadding}>{children}</SWrapper>
+export default function Section({ children, ...props }) {
+  return <SWrapper {...props}>{children}</SWrapper>
 }

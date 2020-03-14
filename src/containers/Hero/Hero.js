@@ -2,11 +2,12 @@ import React from 'react'
 import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 import media from 'utils/media'
+import Scroll from 'components/Scroll'
 
 const Wrapper = styled.section`
   position: relative;
   min-height: 300px;
-  height: auto;
+  height: 100vh;
 `
 
 const Content = styled.div`
@@ -49,6 +50,7 @@ const Hero = props => (
   <Wrapper height={props.height}>
     <BgImg fluid={props.image.fluid} backgroundColor={'#eeeeee'} />
     <Content> {props.children}</Content>
+    <Scroll />
   </Wrapper>
 )
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import LogoSVG from '../icons/logo'
 import { slide as Slide } from 'react-burger-menu'
@@ -21,9 +21,9 @@ const Nav = styled.nav`
       background: black;
   `}
   width: 100%;
-  padding: 12px;
+  padding: 0 12px;
   ${media.s} {
-    padding: 60px;
+    padding: 0 60px;
   }
   margin: 0 auto;
   display: flex;
@@ -169,7 +169,7 @@ const Links = () => (
       </Link>
     </li>
     <li key={3}>
-      <Link to="/online" activeClassName="active">
+      <Link to="/price" activeClassName="active">
         Услуги <Circle>●</Circle>
       </Link>
     </li>
@@ -180,20 +180,34 @@ const Links = () => (
     </li>
   </ul>
 )
-const LogoLinks = ({ className, withIcons }) => (
-  <div className={className}>
-    <div className="logoLinks">
-      <div className="phone">
-        {withIcons && <Phone />}
-        <a href="tel:+89999990000">8 999 999 00-00</a>
-      </div>
-      <div className="adress">
-        {withIcons && <Map />}
-        <span>Санкт-Петербург, ул. Беломорская 14А</span>
+const LogoLinks = ({ className, withIcons }) => {
+  const {
+    contentfulMainPage: { address, phone },
+  } = useStaticQuery(
+    graphql`
+      query {
+        contentfulMainPage {
+          address
+          phone
+        }
+      }
+    `
+  )
+  return (
+    <div className={className}>
+      <div className="logoLinks">
+        <div className="phone">
+          {withIcons && <Phone />}
+          <a href={`tel:${phone}`}>{phone}</a>
+        </div>
+        <div className="adress">
+          {withIcons && <Map />}
+          <span>{address}</span>
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 const Logo = () => (
   <LogoBlock>
     <a href="/" className="logo">

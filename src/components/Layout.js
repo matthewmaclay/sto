@@ -42,7 +42,7 @@ const Layout = props => {
         <Menu absolute={props.absoluteNav} />
         <div id="main">{props.children}</div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <Global styles={globalStyles} />
     </Root>
   )
