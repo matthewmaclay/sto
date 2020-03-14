@@ -15,7 +15,10 @@ const Contact = ({
 }) => {
   return (
     <Layout absoluteNav>
-      <SEO title="Contact" description="Contact description goes here" />
+      <SEO
+        title="Автосервис на Нарвской"
+        description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
+      />
       <Hero image={heroImg}>
         <Heading className="mb20" type="h1">
           {title}

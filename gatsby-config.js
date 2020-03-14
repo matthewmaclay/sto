@@ -21,10 +21,10 @@ module.exports = {
   siteMetadata: {
     title: 'AUTOHOF 24',
     description:
-      'A starter template to build amazing static websites with Gatsby, Contentful and Netlify',
-    siteUrl: 'https://gcn.netlify.com',
+      'Лучший автосервис на Нарвской по адресу Старо-Петергофский проспект 20, к.3',
+    siteUrl: 'https://autohof24.ru',
     image: '/images/share.jpg',
-    basePath: '/old',
+    basePath: '/',
     menuLinks: [
       {
         name: 'Home',
