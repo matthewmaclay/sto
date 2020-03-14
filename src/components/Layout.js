@@ -39,7 +39,7 @@ const Layout = props => {
   return (
     <Root className="siteRoot">
       <div className="siteContent">
-        <Menu />
+        <Menu absolute={props.absoluteNav} />
         <div id="main">{props.children}</div>
       </div>
       <Footer />

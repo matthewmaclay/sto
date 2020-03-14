@@ -1,4 +1,6 @@
 import { css } from '@emotion/core'
+import media from 'utils/media'
+
 export const globalStyles = css`
   /* http://meyerweb.com/eric/tools/css/reset/
  v2.0 | 20110126
@@ -93,6 +95,22 @@ export const globalStyles = css`
     font: inherit;
     vertical-align: baseline;
   }
+  .o-only {
+    ${media.s} {
+      display: none;
+    }
+  }
+  .s-only {
+    display: none;
+    ${media.s} {
+      display: inherit;
+    }
+  }
+  .m-only {
+    display: none ${media.m} {
+      display: inherit;
+    }
+  }
 
   /* Added to Fix Footer to bottom of viewport */
   html,
@@ -128,13 +146,6 @@ export const globalStyles = css`
   nav,
   section {
     display: block;
-  }
-
-  @media screen and (min-width: 35em) {
-    html {
-      margin-right: calc(-100vw + 100%);
-      overflow-x: hidden;
-    }
   }
 
   ol,
@@ -207,50 +218,88 @@ export const globalStyles = css`
   body:not(.user-is-tabbing) a:focus {
     outline: none;
   }
-	nav a.active span {
-		visibility: visible;
-	}
-	@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
-	@import url('https://fonts.googleapis.com/css?family=Play&display=swap');
-	.logoLinks .phone a{
-		padding: 0;
-		display: inline-block;
-		margin-left: 5px;
-		vertical-align: baseline;
-		border: none;
-	}
-	.logoLinks .phone a:hover{
-		border: none;
-	}
-	.logoLinks .phone {
-		margin-bottom: 5px
-	}
-	.logoLinks .adress span{
-		color: white;
-		padding: 0;
-		display: inline-block;
-		margin-left: 5px;
-		vertical-align: baseline;
-		font-family: "Ubuntu", sans-serif;
-	}
-	nav .logo:hover {
-		border-top: none!important
-	}
-	nav .logo {
-		border-top: none!important;
-		padding-top: 23px!important;
-		padding-left: 0!important;
-		margin-right:15px
-	}
-	.logoLinks {
-		align-self: center;
-		margin-top: -12px;
-		display: inline-block;
-		width: max-content;
-	}
-	.logoBlock {
+  nav a.active span {
+    visibility: visible;
+  }
+  @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Play&display=swap');
+  /* Position and sizing of burger button */
+  .bm-burger-button {
+    position: absolute;
+    width: 36px;
+    height: 30px;
+    right: 36px;
+    top: 36px;
+  }
+
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: white;
+    height: 1px !important;
+  }
+
+  /* Color/shape of burger icon bars on hover*/
+  .bm-burger-bars-hover {
+    background: #a90000;
+  }
+
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    margin-right: 26px;
+    height: 24px;
+    width: 24px;
+    top: 28px !important;
+    right: 15px !important;
+  }
+
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: white;
+    width: 1px !important;
+    height: 24px !important;
+  }
+
+  /*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+
+  /* General sidebar styles */
+  .bm-menu {
+    background: black;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+  }
+
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
     display: flex;
-	}
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
+  /* Individual item */
+  .bm-item {
+    display: block;
+  }
 
+  /* Styling of overlay */
+  .bm-overlay {
+    background: black;
+  }
+  .mb20 {
+    margin-bottom: 20px;
+  }
 `
