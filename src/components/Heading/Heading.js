@@ -4,7 +4,7 @@ import media from 'utils/media'
 
 export default function Section({ children, type, className, center }) {
   const SWrapper = styled[type]`
-    ${({ center }) => center && '  text-align: center;'}
+    ${center && '  text-align: center;'}
 
     font-weight: bold;
     ${props => props.theme.headings[type].o};
