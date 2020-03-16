@@ -6,7 +6,7 @@ export default {
     dark80: '#222D3E',
     whiteOpacity: 'rgba(255, 255, 255, 0.68)',
     blackOpacity: 'rgba(0, 0, 0, 0.68)',
-    red: '#222D3E',
+    red: '#CC2515',
     orange: '#F17E01',
     textWhite: '#FFFFFF',
     accent: '#F17E01',
@@ -20,7 +20,7 @@ export default {
     navBar: '"Ubuntu", sans-serif',
   },
   sizes: {
-    maxWidth: '1050px',
+    maxWidth: '1150px',
     maxWidthCentered: '650px',
     containerPadding: '60px',
     menu: {
@@ -47,8 +47,11 @@ export default {
       o: 'font-size: 12px; line-height: 16px;',
       s: 'font-size: 14px; line-height: 18px;',
     },
+    16: {
+      o: 'font-size: 16px; line-height: 24px;',
+    },
     20: {
-      o: 'font-size: 16px; line-height: 20px;',
+      o: 'font-size: 16px; line-height: 24px;',
       s: 'font-size: 20px; line-height: 24px;',
     },
     24: {

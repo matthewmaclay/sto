@@ -5,7 +5,7 @@ import Text from 'components/Text'
 import React from 'react'
 
 const SWrapper = styled.div`
-  max-width: 640px;
+  max-width: ${props => props.theme.sizes.maxWidthCentered};
   margin: auto;
 `
 

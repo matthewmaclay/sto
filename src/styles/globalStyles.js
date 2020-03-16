@@ -303,4 +303,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .mb20 {
     margin-bottom: 20px;
   }
+  .mt20 {
+    margin-top: 20px;
+  }
+  .mb25 {
+    margin-bottom: 25px;
+  }
+  .mb40 {
+    margin-bottom: 40px;
+  }
 `

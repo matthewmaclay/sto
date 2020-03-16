@@ -11,6 +11,9 @@ const SWrapper = styled.div`
     padding: ${props => !props.withoutPadding && props.theme.sectionPaddings.m};
   }
   background: ${props => (props.black ? props.theme.colors.dark100 : 'white')};
+  .accent {
+    color: ${props => props.theme.colors.orange};
+  }
 `
 export default function Section({ children, ...props }) {
   return <SWrapper {...props}>{children}</SWrapper>

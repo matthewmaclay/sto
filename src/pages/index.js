@@ -8,6 +8,7 @@ import Why from 'containers/Why'
 import Hero from 'containers/Hero'
 import Info from 'containers/Info'
 import Services from 'containers/Services'
+import Appointment from 'containers/Appointment'
 
 const Contact = ({
   data: {
@@ -31,6 +32,7 @@ const Contact = ({
       <Why />
       <Services />
       <Info />
+      <Appointment />
     </Layout>
   )
 }
