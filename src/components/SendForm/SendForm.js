@@ -16,8 +16,8 @@ const SWrapper = styled.form`
 
 export default function SendForm({ children, to, link, ...props }) {
   return (
-    <SWrapper {...props}>
-      <InputMask mask="+7(999) 999 99-99" value={props.value}>
+    <SWrapper action="/action_page.php" method="post" {...props}>
+      <InputMask maskChar=" " mask="+7(999) 999 99-999" value={props.value}>
         {inputProps => (
           <input
             {...inputProps}
@@ -25,7 +25,7 @@ export default function SendForm({ children, to, link, ...props }) {
             name="tel"
             className="mb25"
             placeholder="+7(999) 999 99-99"
-            pattern="+7([0-9]{3}) [0-9]{2}-[0-9]{2}"
+            pattern="\+7(\d{3}) [0-9]{2}-[0-9]{2}"
           />
         )}
       </InputMask>
