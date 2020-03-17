@@ -10,6 +10,7 @@ import Hero from 'containers/Hero'
 import Info from 'containers/Info'
 import Services from 'containers/Services'
 import Appointment from 'containers/Appointment'
+import Gallery from 'containers/Gallery'
 
 const Contact = ({
   data: {
@@ -21,7 +22,12 @@ const Contact = ({
       <SEO
         title="Автосервис на Нарвской"
         description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
-      />
+      >
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/swiper/css/swiper.min.css"
+        ></link>
+      </SEO>
       <Hero image={heroImg}>
         <Heading className="mb20" type="h1">
           {title}
@@ -34,6 +40,7 @@ const Contact = ({
       <Why />
       <Services />
       <Info />
+      <Gallery />
       <Appointment />
     </Layout>
   )

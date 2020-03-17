@@ -86,8 +86,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'GCN',
-        short_name: 'GCN',
+        name: 'Autohof24 | Автосервис на Нарвской',
+        short_name: 'AutoHof24',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#ffffff',
