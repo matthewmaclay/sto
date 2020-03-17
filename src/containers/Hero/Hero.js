@@ -14,6 +14,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding: 12px;
   ${media.s} {
     padding: 60px;

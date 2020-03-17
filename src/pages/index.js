@@ -3,6 +3,7 @@ import Layout from 'components/Layout'
 import Heading from 'components/Heading'
 import Text from 'components/Text'
 import SEO from 'components/SEO'
+import Button from 'components/Button'
 
 import Why from 'containers/Why'
 import Hero from 'containers/Hero'
@@ -25,9 +26,10 @@ const Contact = ({
         <Heading className="mb20" type="h1">
           {title}
         </Heading>
-        <Text tag="h2" type="20">
+        <Text className="mb30" tag="h2" type="20">
           {description}
         </Text>
+        <Button>Узнать стоимость ТО</Button>
       </Hero>
       <Why />
       <Services />
