@@ -312,6 +312,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .mb30 {
     margin-bottom: 30px;
   }
+
   .mt30 {
     margin-top: 30px;
   }

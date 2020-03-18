@@ -52,7 +52,6 @@ export const query = graphql`
       id
       title
       description
-
       heroImg {
         id
         fluid(maxWidth: 1800) {

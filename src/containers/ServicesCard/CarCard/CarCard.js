@@ -14,7 +14,15 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  ${props => props.bg && `background:${props.bg};`}
+  cursor: pointer;
+
+  background: ${({ active, activeBg, bg }) => (active ? activeBg : bg)};
+  ${({ activeType, type }) =>
+    activeType && activeType !== type
+      ? `
+    opacity: 0.5;
+    `
+      : ''}
   &:not(:last-child) {
     margin-bottom: 20px;
     ${media.s} {
@@ -25,14 +33,42 @@ const Wrapper = styled.div`
       margin-right: 30px;
     }
   }
-`
-const CarCard = props => (
-  <Wrapper bg={props.background}>
-    {props.icon}
-    <Text className="mt30" style={{ lineHeight: '18px' }} type="16">
-      {props.children}
-    </Text>
-  </Wrapper>
-)
+  position: relative;
+
+  &:before {
+    content: ${({ active }) => active && "' '"};
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 16px;
+    top: -15px;
+    border-radius: 50%;
+    box-sizing: border-box;
+
+    /* Main orange */
+    background: white;
+    border: 8px solid ${({ theme }) => theme.colors.orange};
+  }
+` // children, bg, activeBg, type, activeType
+const CarCard = props => {
+  const { type, activeType, setCarType } = props
+  const onClick = React.useCallback(() => {
+    if (activeType !== type) {
+      setCarType(type)
+    } else {
+      setCarType(false)
+    }
+  }, [type, activeType])
+  const active = type === activeType
+
+  return (
+    <Wrapper onClick={onClick} active={active} {...props}>
+      {props.icon}
+      <Text className="mt30" style={{ lineHeight: '18px' }} type="16">
+        {props.children}
+      </Text>
+    </Wrapper>
+  )
+}
 
 export default CarCard
