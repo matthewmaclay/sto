@@ -300,6 +300,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .bm-overlay {
     background: black;
   }
+  .mb10 {
+    margin-bottom: 10px;
+  }
   .mb20 {
     margin-bottom: 20px;
   }
@@ -309,11 +312,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .mb30 {
     margin-bottom: 30px;
   }
+  .mt30 {
+    margin-top: 30px;
+  }
   .mb25 {
     margin-bottom: 25px;
   }
   .mb40 {
     margin-bottom: 40px;
+  }
+  .center {
+    text-align: center;
   }
   :root {
     --swiper-theme-color: rgb(241, 126, 1) !important;

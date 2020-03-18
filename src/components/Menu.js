@@ -169,7 +169,7 @@ const Links = () => (
       </Link>
     </li>
     <li key={3}>
-      <Link to="/price" activeClassName="active">
+      <Link to="/services" activeClassName="active">
         Услуги <Circle>●</Circle>
       </Link>
     </li>

@@ -7,7 +7,9 @@ export default function Section({
   type,
   className,
   opacity,
+  bold,
   tag = 'div',
+  ...props
 }) {
   const SWrapper = styled[tag]`
     text-align: inherit;
@@ -15,9 +17,14 @@ export default function Section({
     ${props => props.theme.texts[type].o};
     ${props => props.theme.texts[type].o};
     ${opacity && 'opacity: 0.68;'}
+    ${bold && 'font-weight: bold;'}
     ${media.s} {
       ${props => props.theme.texts[type].s};
     }
   `
-  return <SWrapper className={className}>{children}</SWrapper>
+  return (
+    <SWrapper {...props} className={className}>
+      {children}
+    </SWrapper>
+  )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 import media from 'utils/media'
 
-const SWrapper = styled.div`
+const SWrapper = styled.section`
   padding: ${props => !props.withoutPadding && props.theme.sectionPaddings.o};
   ${media.s} {
     padding: ${props => !props.withoutPadding && props.theme.sectionPaddings.s};

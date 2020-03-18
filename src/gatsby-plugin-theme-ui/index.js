@@ -57,6 +57,9 @@ export default {
     24: {
       o: 'font-size: 24px; line-height: 36px;',
     },
+    28: {
+      o: 'font-size: 28px; line-height: 32px;',
+    },
     48: {
       o: 'font-size: 32px; line-height: 40px;',
       s: 'font-size: 48px; line-height: 64px;',
