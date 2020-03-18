@@ -79,7 +79,7 @@ const Tabs = props => {
       <Collapse isOpened={!!serviceType}>
         <SItemsWrapper>
           {services
-            .filter(item => item.node.type.id === serviceType)
+            .filter(item => item.node.type && item.node.type.id === serviceType)
             .map(item => (
               <Item
                 key={item.id}
