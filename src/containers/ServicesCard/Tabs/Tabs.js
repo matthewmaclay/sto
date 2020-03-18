@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import media from 'utils/media'
+import { Collapse } from 'react-collapse'
 
 import Text from 'components/Text'
 import Tab from 'components/Tab'
@@ -14,11 +15,12 @@ const SWrapper = styled.div`
   ${media.m} {
     padding-top: 115px;
   }
+  & > .ReactCollapse--collapse {
+    transition: height 500ms;
+  }
 `
 
-const SItemsWrapper = styled.div`
-  margin-top: 60px;
-`
+const SItemsWrapper = styled.div``
 const STabsWrapper = styled.div`
   overflow: scroll;
   display: flex;
@@ -74,17 +76,19 @@ const Tabs = props => {
           />
         ))}
       </STabsWrapper>
-      <SItemsWrapper>
-        {services
-          .filter(item => item.node.type.id === serviceType)
-          .map(item => (
-            <Item
-              key={item.id}
-              title={item.node.title}
-              cost={item.node[props.carType]}
-            />
-          ))}
-      </SItemsWrapper>
+      <Collapse isOpened={!!serviceType}>
+        <SItemsWrapper>
+          {services
+            .filter(item => item.node.type.id === serviceType)
+            .map(item => (
+              <Item
+                key={item.id}
+                title={item.node.title}
+                cost={item.node[props.carType]}
+              />
+            ))}
+        </SItemsWrapper>
+      </Collapse>
     </SWrapper>
   )
 }

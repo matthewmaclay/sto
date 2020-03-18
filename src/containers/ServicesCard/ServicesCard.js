@@ -35,11 +35,12 @@ const SWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin-bottom: 60px;
     ${media.m} {
       flex-direction: row;
     }
   }
-  .ReactCollapse--collapse {
+  & > .ReactCollapse--collapse {
     transition: height 300ms;
   }
 `
