@@ -53,7 +53,6 @@ const Tabs = props => {
               offroad
               bus
               title
-              description
               type {
                 id
               }
