@@ -35,7 +35,7 @@ export default function Card({ icon, title, description }) {
   return (
     <SWrapper>
       {icon}
-      <SHeading center type="h3">
+      <SHeading center type="h4">
         {title}
       </SHeading>
       <SText type="14">{description}</SText>

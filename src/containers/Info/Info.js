@@ -9,9 +9,9 @@ const SWrapper = styled.div`
   margin: auto;
 `
 
-export default function Info() {
+export default function Info(props) {
   return (
-    <Section>
+    <Section titlePage={props.titlePage}>
       <SWrapper>
         <Text className="mb20" type="24">
           Вы можете приехать к нам в любой день в любое время или записаться на

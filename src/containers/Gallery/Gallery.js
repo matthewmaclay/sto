@@ -7,6 +7,9 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const SWrapper = styled.div`
+  img {
+    max-height: 400px;
+  }
   .swiper-container {
     width: 100%;
     padding-top: 50px;
@@ -16,7 +19,7 @@ const SWrapper = styled.div`
     background-position: center;
     background-size: cover;
     min-width: 300px;
-    min-height: 300px;
+    height: 400px;
   }
   .swiper-button-next,
   .swiper-button-prev {

@@ -14,6 +14,7 @@ export default {
     secondary: '#e9e9e9',
     tertiary: '#f3f3f3',
     highlight: '#5b8bf7',
+    pink: '#FDF7F1',
   },
   fonts: {
     body: '"Play", sans-serif;',
@@ -38,6 +39,10 @@ export default {
       s: 'font-size: 48px; line-height: 64px;',
     },
     h3: {
+      o: 'font-size: 32px; line-height: 48px;',
+      s: 'font-size: 32px; line-height: 48px;',
+    },
+    h4: {
       o: 'font-size: 16px; line-height: 20px;',
       s: 'font-size: 20px; line-height: 24px;',
     },

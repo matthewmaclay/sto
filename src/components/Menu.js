@@ -20,6 +20,9 @@ const Nav = styled.nav`
       : `
       background: black;
   `}
+  svg {
+    fill: white;
+  }
   width: 100%;
   padding: 0 12px;
   ${media.s} {
@@ -75,7 +78,6 @@ const Nav = styled.nav`
   }
   .desktopLinks {
     display: none;
-
     ${media.m} {
       display: block;
     }
@@ -111,6 +113,7 @@ const Nav = styled.nav`
 `
 const Circle = styled.span`
   visibility: hidden;
+  margin-left: 5px;
   color: ${props => props.theme.colors.accent};
 `
 
@@ -150,12 +153,45 @@ const LogoBlock = styled.span`
   }
   .logoLinks {
     align-self: center;
-    margin-top: -12px;
+
     display: inline-block;
     width: max-content;
   }
 `
 
+const SLogoLinksWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${props => !props.big && 'align-items: center;'}
+  justify-content: center;
+  a {
+    font-weight: bold;
+  }
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+  .accent {
+    padding-left: 30px;
+    margin-top: 8px;
+    cursor: pointer;
+  }
+  .big {
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: black;
+      margin-right: 15px;
+    }
+    .phone {
+      a {
+        color: black;
+      }
+
+      margin-bottom: 30px;
+    }
+  }
+`
 const Links = () => (
   <ul>
     <li key={1}>
@@ -174,13 +210,13 @@ const Links = () => (
       </Link>
     </li>
     <li key={4}>
-      <Link to="/online" activeClassName="active">
+      <Link to="/contacts" activeClassName="active">
         Контакты <Circle>●</Circle>
       </Link>
     </li>
   </ul>
 )
-const LogoLinks = ({ className, withIcons }) => {
+export const LogoLinks = ({ className, withIcons, big }) => {
   const {
     contentfulMainPage: { address, phone },
   } = useStaticQuery(
@@ -194,18 +230,21 @@ const LogoLinks = ({ className, withIcons }) => {
     `
   )
   return (
-    <div className={className}>
-      <div className="logoLinks">
-        <div className="phone">
-          {withIcons && <Phone />}
-          <a href={`tel:${phone}`}>{phone}</a>
-        </div>
-        <div className="adress">
-          {withIcons && <Map />}
-          <span>{address}</span>
+    <SLogoLinksWrapper big={big}>
+      <div className={`${big && 'big'} ${className}`}>
+        <div className="logoLinks">
+          <div className="phone">
+            {withIcons && <Phone />}
+            <a href={`tel:${phone}`}>{phone}</a>
+          </div>
+          <div className="adress">
+            {withIcons && <Map />}
+            <span>{address}</span>
+          </div>
         </div>
       </div>
-    </div>
+      {big && <div className="accent">Построить маршрут</div>}
+    </SLogoLinksWrapper>
   )
 }
 const Logo = () => (
@@ -213,7 +252,7 @@ const Logo = () => (
     <a href="/" className="logo">
       <LogoSVG />
     </a>
-    <LogoLinks withIcons className="s-only" />
+    <LogoLinks header withIcons className="s-only" />
   </LogoBlock>
 )
 
@@ -228,7 +267,7 @@ const Menu = ({ absolute }) => {
       <div className="mobileLinks">
         <Slide width={'100vw'} right>
           <Links />
-          <LogoLinks />
+          <LogoLinks header />
         </Slide>
       </div>
     </Nav>

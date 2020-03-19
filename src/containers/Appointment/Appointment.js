@@ -23,9 +23,9 @@ const SWrapper = styled.div`
   }
 `
 
-export default function Appointment() {
+export default function Appointment({ titlePage }) {
   return (
-    <Section black>
+    <Section titlePage={titlePage} black>
       <SWrapper>
         <div className="first">
           <Heading white type="h2">

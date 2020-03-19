@@ -13,55 +13,23 @@ import Appointment from 'containers/Appointment'
 import Gallery from 'containers/Gallery'
 import Contacts from 'containers/Contacts'
 
-const Contact = ({
-  data: {
-    contentfulMainPage: { heroImg, title, description },
-  },
-}) => {
+const Contact = () => {
   return (
-    <Layout absoluteNav>
+    <Layout>
       <SEO
         title="Автосервис на Нарвской"
         description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
       >
+        {' '}
         <link
           rel="stylesheet"
           href="https://unpkg.com/swiper/css/swiper.min.css"
         ></link>
       </SEO>
-      <Hero image={heroImg}>
-        <Heading className="mb20" type="h1">
-          {title}
-        </Heading>
-        <Text className="mb30" tag="h2" type="20">
-          {description}
-        </Text>
-        <Button>Узнать стоимость ТО</Button>
-      </Hero>
-      <Why />
-      <Services />
-      <Info />
+      <Info titlePage="О нас" />
       <Gallery />
-      <Appointment />
-      <Contacts />
     </Layout>
   )
 }
-
-export const query = graphql`
-  query SiteTitleQuery {
-    contentfulMainPage {
-      id
-      title
-      description
-      heroImg {
-        id
-        fluid(maxWidth: 1800) {
-          ...GatsbyContentfulFluid_noBase64
-        }
-      }
-    }
-  }
-`
 
 export default Contact
