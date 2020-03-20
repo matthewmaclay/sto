@@ -5,6 +5,7 @@ import Heading from 'components/Heading'
 import styled from '@emotion/styled'
 import media from 'utils/media'
 import Button from 'components/Button'
+import { useStaticQuery, graphql } from 'gatsby'
 import { YMaps, Map, ObjectManager } from 'react-yandex-maps'
 
 const SWrapper = styled.div`
@@ -28,6 +29,104 @@ const SContactsWrapper = styled.div`
     padding-top: 50px;
   }
 `
+
+const Contacts = props => {
+  const {
+    contentfulMainPage: { address },
+  } = useStaticQuery(
+    graphql`
+      query {
+        contentfulMainPage {
+          address {
+            id
+            coordinates {
+              lat
+              lon
+            }
+            description
+            title
+          }
+        }
+      }
+    `
+  )
+  const containerRef = React.createRef()
+  const [sizeMap, setSizeMap] = useState({ width: 0, height: 0 })
+  useEffect(() => {
+    const { clientWidth } = containerRef.current
+    setSizeMap({
+      width: clientWidth,
+      height: 400,
+    })
+  }, [])
+
+  const mapFeatures = address.reduce(
+    (acc, item) => [
+      ...acc,
+      {
+        type: 'Feature',
+        id: item.id,
+        geometry: {
+          type: 'Point',
+          coordinates: [item.coordinates.lat, item.coordinates.lon],
+        },
+        properties: {
+          hintContent: item.title,
+          balloonContent: item.description,
+        },
+        options: {
+          opacity: 0.2,
+          strokeWidth: 2,
+          fillColor: '#00FF00',
+        },
+      },
+    ],
+    []
+  )
+  return (
+    <Section titlePage={props.titlePage}>
+      <SWrapper>
+        <SMapWrapper ref={containerRef}>
+          <YMaps>
+            <Map
+              {...sizeMap}
+              defaultState={{ center: [59.946777, 30.321137], zoom: 11 }}
+            >
+              <ObjectManager
+                options={{
+                  clusterize: true,
+                  gridSize: 32,
+                }}
+                objects={{
+                  openBalloonOnClick: true,
+                  preset: 'islands#redDotIcon',
+                }}
+                clusters={{
+                  preset: 'islands#redClusterIcons',
+                }}
+                defaultFeatures={mapFeatures}
+                modules={[
+                  'objectManager.addon.objectsBalloon',
+                  'objectManager.addon.objectsHint',
+                ]}
+              />
+            </Map>
+          </YMaps>
+        </SMapWrapper>
+        <SContactsWrapper>
+          {!props.titlePage && (
+            <Heading className="mb60" type="h3">
+              Как добраться
+            </Heading>
+          )}
+          <LogoLinks big withIcons></LogoLinks>
+        </SContactsWrapper>
+      </SWrapper>
+    </Section>
+  )
+}
+
+export default Contacts
 const features = [
   {
     type: 'Feature',
@@ -60,59 +159,3 @@ const features = [
     },
   },
 ]
-
-const Contacts = props => {
-  const containerRef = React.createRef()
-  const [sizeMap, setSizeMap] = useState({ width: 0, height: 0 })
-  useEffect(() => {
-    const { clientHeight, clientWidth } = containerRef.current
-
-    setSizeMap({
-      width: clientWidth > 768 ? Math.ceil(clientWidth / 2) : clientWidth,
-      height: 400,
-    })
-  }, [])
-  return (
-    <Section titlePage={props.titlePage}>
-      <SWrapper>
-        <SMapWrapper ref={containerRef}>
-          <YMaps>
-            <Map
-              {...sizeMap}
-              defaultState={{ center: [59.946777, 30.321137], zoom: 10 }}
-            >
-              <ObjectManager
-                options={{
-                  clusterize: true,
-                  gridSize: 32,
-                }}
-                objects={{
-                  openBalloonOnClick: true,
-                  preset: 'islands#yellowDotIcon',
-                }}
-                clusters={{
-                  preset: 'islands#redClusterIcons',
-                }}
-                defaultFeatures={features}
-                modules={[
-                  'objectManager.addon.objectsBalloon',
-                  'objectManager.addon.objectsHint',
-                ]}
-              />
-            </Map>
-          </YMaps>
-        </SMapWrapper>
-        <SContactsWrapper>
-          {!props.titlePage && (
-            <Heading className="mb60" type="h3">
-              Как добраться
-            </Heading>
-          )}
-          <LogoLinks big withIcons></LogoLinks>
-        </SContactsWrapper>
-      </SWrapper>
-    </Section>
-  )
-}
-
-export default Contacts

@@ -13,7 +13,7 @@ export default function Section({
 }) {
   const SWrapper = styled[tag]`
     text-align: inherit;
-    font-family: 'Ubuntu';
+    font-family: ${props.play ? 'Play' : 'Ubuntu'};
     ${props => props.theme.texts[type].o};
     ${props => props.theme.texts[type].o};
     ${opacity && 'opacity: 0.68;'}

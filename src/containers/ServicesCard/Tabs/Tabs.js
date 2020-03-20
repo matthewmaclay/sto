@@ -10,8 +10,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Item from './Item'
 
 const SWrapper = styled.div`
+  padding-top: 115px;
   ${media.m} {
-    padding-top: 115px;
   }
   & > .ReactCollapse--collapse {
     transition: height 500ms;

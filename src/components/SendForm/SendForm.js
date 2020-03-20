@@ -5,10 +5,14 @@ import Button from 'components/Button'
 import { Link } from 'gatsby'
 
 const SWrapper = styled.form`
+  ${props =>
+    props.center &&
+    'display: flex; flex-direction: column; align-items: center;'}
   input[type='tel'] {
-    color: white;
+    color: ${props => (props.white ? 'black' : 'white')};
     width: 100%;
-    background: ${props => props.theme.colors.dark80};
+    background: ${props =>
+      props.white ? '#222D3E10' : props.theme.colors.dark80};
     padding: 16px 20px 16px 20px;
     max-width: 418px;
   }
@@ -30,7 +34,11 @@ export default function SendForm({ children, to, link, ...props }) {
         )}
       </InputMask>
 
-      <Button tag="input" type="submit" value="Отправить" />
+      <Button
+        tag="input"
+        type="submit"
+        value={props.buttonValue || 'Отправить'}
+      />
     </SWrapper>
   )
 }

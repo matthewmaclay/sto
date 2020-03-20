@@ -231,7 +231,7 @@ const Links = () => (
 )
 export const LogoLinks = ({ className, withIcons, big }) => {
   const {
-    contentfulMainPage: { address, phone },
+    contentfulMainPage: { addressString, phone },
   } = useStaticQuery(
     graphql`
       query {
@@ -252,7 +252,7 @@ export const LogoLinks = ({ className, withIcons, big }) => {
           </div>
           <div className="logoLinks__item adress">
             {withIcons && <Map />}
-            <span>{address}</span>
+            <span>{addressString}</span>
           </div>
         </div>
       </div>

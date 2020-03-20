@@ -14,6 +14,7 @@ import CarCard from './CarCard'
 import HeaderText from './HeaderText'
 import Tabs from './Tabs'
 import { Link } from 'gatsby'
+import Form from './Form/Form'
 
 const SWrapper = styled.div`
   position: relative;
@@ -130,6 +131,7 @@ const ServicesCard = props => {
         </div>
         <Collapse isOpened={!!carType}>
           <Tabs carType={carType} />
+          <Form />
         </Collapse>
       </SWrapper>
       <SLinkToPrice>
