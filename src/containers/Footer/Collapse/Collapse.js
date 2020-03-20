@@ -50,9 +50,8 @@ const STitle = styled.div`
 `
 
 export default function CollapseFooter({ children }) {
-  const [open, setOpen] = React.useState(
-    document.documentElement.clientWidth > 768
-  )
+  const [open, setOpen] = React.useState()
+  React.useEffect(() => setOpen(document.documentElement.clientWidth > 768), [])
   return (
     <SWrapper>
       <STitle open={open} onClick={() => setOpen(!open)}>
