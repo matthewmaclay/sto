@@ -236,7 +236,7 @@ export const LogoLinks = ({ className, withIcons, big }) => {
     graphql`
       query {
         contentfulMainPage {
-          address
+          addressString
           phone
         }
       }
