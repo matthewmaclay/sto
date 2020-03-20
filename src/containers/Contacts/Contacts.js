@@ -16,6 +16,8 @@ const SWrapper = styled.div`
 `
 const SMapWrapper = styled.div`
   flex: 1;
+  display: flex;
+  justify-content: flex-end;
 `
 const SContactsWrapper = styled.div`
   flex: 1;

@@ -164,24 +164,37 @@ const SLogoLinksWrapper = styled.div`
   flex-direction: column;
   ${props => !props.big && 'align-items: center;'}
   justify-content: center;
+
+  .logoLinks__item {
+    position: relative;
+    padding-left: 15px;
+  }
   a {
     font-weight: bold;
   }
   svg {
     width: 12px;
     height: 12px;
+    position: absolute;
+    left: 0;
+    top: 3px;
   }
   .accent {
-    padding-left: 30px;
+    padding-left: 25px;
     margin-top: 8px;
     cursor: pointer;
   }
   .big {
+    .logoLinks__item {
+      position: relative;
+      padding-left: 25px;
+    }
     svg {
       width: 16px;
       height: 16px;
       fill: black;
       margin-right: 15px;
+      top: 0;
     }
     .phone {
       a {
@@ -233,11 +246,11 @@ export const LogoLinks = ({ className, withIcons, big }) => {
     <SLogoLinksWrapper big={big}>
       <div className={`${big && 'big'} ${className}`}>
         <div className="logoLinks">
-          <div className="phone">
+          <div className="logoLinks__item phone">
             {withIcons && <Phone />}
             <a href={`tel:${phone}`}>{phone}</a>
           </div>
-          <div className="adress">
+          <div className="logoLinks__item adress">
             {withIcons && <Map />}
             <span>{address}</span>
           </div>

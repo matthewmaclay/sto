@@ -10,8 +10,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Item from './Item'
 
 const SWrapper = styled.div`
-  padding-top: 50px;
-
   ${media.m} {
     padding-top: 115px;
   }
@@ -37,11 +35,12 @@ const Tabs = props => {
   } = useStaticQuery(
     graphql`
       query {
-        allContentfulServiceCategory {
+        allContentfulServiceCategory(sort: { fields: sort }) {
           edges {
             node {
               id
               title
+              sort
             }
           }
         }
@@ -62,9 +61,12 @@ const Tabs = props => {
       }
     `
   )
-  const [serviceType, seServiceType] = React.useState(false)
+  const [serviceType, seServiceType] = React.useState(
+    serviceCategories[0].node.id
+  )
+
   return (
-    <SWrapper className="mb20">
+    <SWrapper id="tabs" className="mb20">
       <STabsWrapper>
         {serviceCategories.map(item => (
           <Tab

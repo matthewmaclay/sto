@@ -15,12 +15,12 @@ export default function Button({
   padding: 20px 40px;
   display: inline-block;
   border-radius: 32px;
-  border-style: solid;
+
   color: white;
   ${
     style === 'gradient'
       ? 'background: linear-gradient(90deg, #F17E01 0%, #CC2515 100%);'
-      : 'border-width: 2px;'
+      : 'border-width: 2px;  border-style: solid;'
   }
 
   ${style === 'white' && 'border-color: white;'}

@@ -13,11 +13,12 @@ import MicroCar from 'icons/microCar'
 import CarCard from './CarCard'
 import HeaderText from './HeaderText'
 import Tabs from './Tabs'
+import { Link } from 'gatsby'
 
 const SWrapper = styled.div`
   position: relative;
   top: -100px;
-
+  margin-bottom: 250px;
   max-width: 1320px;
   width: 100vw;
   padding: 50px 40px;
@@ -35,7 +36,6 @@ const SWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    margin-bottom: 60px;
     ${media.m} {
       flex-direction: row;
     }
@@ -55,9 +55,37 @@ const SCarsWrapper = styled.div`
   }
 `
 
-const SCard = styled.div`
-  min-height: 300px;
-  height: 100vh;
+const SCard = styled.div``
+
+const SLinkToPrice = styled.div`
+  margin-bottom: 160px;
+  display: flex;
+  justify-content: center;
+  @keyframes hover {
+    50% {
+      transform: translateX(50px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  a {
+    position: relative;
+    padding-right: 40px;
+    text-decoration: none;
+    color: black;
+  }
+  a:before {
+    content: ' ';
+    position: absolute;
+    right: 0;
+    width: 24px;
+    height: 18px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAASCAYAAABB7B6eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABXSURBVHgB7ZOxDcAgDAQ/mYARGCEjZISMkE1gM0aAUdgAvqCnACOBfNLZ3X9hGRjjpwZCPLTQKFnitURLzMURqMVcbNvp5sjYDAfBO2j4YeEvFnzt1wuv73okIV4alVkAAAAASUVORK5CYII=');
+  }
+  a:hover:before {
+    animation: hover 1s ease-in-out infinite;
+  }
 `
 
 const ServicesCard = props => {
@@ -104,6 +132,9 @@ const ServicesCard = props => {
           <Tabs carType={carType} />
         </Collapse>
       </SWrapper>
+      <SLinkToPrice>
+        <Link to="/price">Смотреть все услуги</Link>
+      </SLinkToPrice>
     </SCard>
   )
 }

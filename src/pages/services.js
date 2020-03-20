@@ -23,7 +23,7 @@ const Contact = ({}) => {
       <Section black>
         <SHeader>
           <Heading className="mb20" white center type="h2">
-            Почему выбирают нас
+            Наши услуги
           </Heading>
           <Text center className="mb40" type="24">
             Ознакомьтесь с ценами на услуги и отправьте заявку.

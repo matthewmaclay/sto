@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 const SWrapper = styled.div`
   cursor: pointer;
-  height: 50px;
+  height: 30px;
   border-bottom: 3px solid white;
   &:not(:last-child) {
     margin-right: 60px;

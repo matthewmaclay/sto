@@ -7,6 +7,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const SWrapper = styled.div`
+  margin-bottom: 120px;
   img {
     max-height: 400px;
   }
@@ -54,6 +55,7 @@ export default function Gallery() {
   React.useEffect(() => {
     const swiper = new Swiper('.swiper-container', {
       slidesPerView: 1,
+      slideToClickedSlide: true,
       centeredSlides: true,
       spaceBetween: 30,
       initialSlide: 1,
@@ -80,11 +82,13 @@ export default function Gallery() {
       <SWrapper>
         <div className="swiper-container">
           <div className="swiper-wrapper">
-            {items.map(({ fluid, id }) => (
-              <div key={id} className="swiper-slide">
-                <ItemImg fluid={fluid} backgroundColor={'#eeeeee'} />
-              </div>
-            ))}
+            {items
+              .filter(item => item.fluid)
+              .map(({ fluid, id }) => (
+                <div key={id} className="swiper-slide">
+                  <ItemImg fluid={fluid} backgroundColor={'#eeeeee'} />
+                </div>
+              ))}
           </div>
           <div className="swiper-pagination"></div>
 
