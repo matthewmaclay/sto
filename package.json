@@ -34,6 +34,8 @@
     "gatsby-transformer-remark": "^2.6.50",
     "inquirer": "^7.0.4",
     "lodash": "^4.17.15",
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "moment": "^2.24.0",
     "path": "^0.12.7",
     "prismjs": "^1.19.0",

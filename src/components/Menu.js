@@ -77,12 +77,23 @@ const Nav = styled.nav`
     }
   }
   .desktopLinks {
+    margin: 0 -12px;
+    ${media.l} {
+      margin-right: -14px;
+    }
     display: none;
     ${media.m} {
       display: block;
     }
     li {
       height: 100%;
+
+      a {
+        padding: 0 7px;
+        ${media.l} {
+          padding: 0 14px;
+        }
+      }
     }
   }
   .mobileLinks {
@@ -207,6 +218,11 @@ const SLogoLinksWrapper = styled.div`
 `
 const Links = () => (
   <ul>
+    <li key={0}>
+      <Link to="/" activeClassName="active">
+        Главная <Circle>●</Circle>
+      </Link>
+    </li>
     <li key={1}>
       <Link to="/about" activeClassName="active">
         О Нас <Circle>●</Circle>

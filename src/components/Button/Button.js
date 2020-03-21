@@ -4,13 +4,14 @@ import { Link } from 'gatsby'
 
 export default function Button({
   children,
-  to,
   link,
   tag = 'div',
   style = 'gradient',
+  center,
+
   ...props
 }) {
-  const SWrapper = styled[tag]`
+  const SWrapper = styled(link ? Link : tag)`
   cursor: pointer;
   padding: 20px 40px;
   display: inline-block;
@@ -23,8 +24,14 @@ export default function Button({
       : 'border-width: 2px;  border-style: solid;'
   }
 
+  ${center && 'text-align: center;'}
   ${style === 'white' && 'border-color: white;'}
   ${style === 'black' && 'border-color: black; color: black;'}
+  transition: transform 300ms ease-in-out;
+  text-decoration: none;
+  &:hover{
+    transform: scale(1.05);
+  }
 
 `
   const Component = () =>
@@ -33,11 +40,6 @@ export default function Button({
     ) : (
       <SWrapper {...props} />
     )
-  if (link)
-    return (
-      <Link to={to} activeClassName="active">
-        <Component />
-      </Link>
-    )
+
   return <Component />
 }

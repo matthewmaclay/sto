@@ -36,7 +36,9 @@ const Contact = ({
         <Text className="mb30" tag="h2" type="20">
           {description}
         </Text>
-        <Button>Узнать стоимость ТО</Button>
+        <Button link to="/online">
+          Узнать стоимость ТО
+        </Button>
       </Hero>
       <Why />
       <Services />

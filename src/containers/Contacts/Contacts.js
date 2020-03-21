@@ -4,14 +4,15 @@ import { LogoLinks } from 'components/Menu'
 import Heading from 'components/Heading'
 import styled from '@emotion/styled'
 import media from 'utils/media'
-import Button from 'components/Button'
+import debounce from 'lodash.debounce'
+import throttle from 'lodash.throttle'
 import { useStaticQuery, graphql } from 'gatsby'
-import { YMaps, Map, ObjectManager } from 'react-yandex-maps'
+import { YMaps, Map, Placemark } from 'react-yandex-maps'
 
 const SWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  ${media.s} {
+  ${media.m} {
     flex-direction: row;
   }
 `
@@ -29,7 +30,7 @@ const SContactsWrapper = styled.div`
     padding-top: 50px;
   }
 `
-
+const containerRef = React.createRef()
 const Contacts = props => {
   const {
     contentfulMainPage: { address },
@@ -50,15 +51,6 @@ const Contacts = props => {
       }
     `
   )
-  const containerRef = React.createRef()
-  const [sizeMap, setSizeMap] = useState({ width: 0, height: 0 })
-  useEffect(() => {
-    const { clientWidth } = containerRef.current
-    setSizeMap({
-      width: clientWidth,
-      height: 400,
-    })
-  }, [])
 
   const mapFeatures = address.reduce(
     (acc, item) => [
@@ -68,7 +60,7 @@ const Contacts = props => {
         id: item.id,
         geometry: {
           type: 'Point',
-          coordinates: [item.coordinates.lat, item.coordinates.lon],
+          coordinates: [],
         },
         properties: {
           hintContent: item.title,
@@ -89,27 +81,16 @@ const Contacts = props => {
         <SMapWrapper ref={containerRef}>
           <YMaps>
             <Map
-              {...sizeMap}
-              defaultState={{ center: [59.946777, 30.321137], zoom: 11 }}
+              width="100%"
+              height="400px"
+              defaultState={{ center: [59.922792, 30.312237], zoom: 12 }}
             >
-              <ObjectManager
-                options={{
-                  clusterize: true,
-                  gridSize: 32,
-                }}
-                objects={{
-                  openBalloonOnClick: true,
-                  preset: 'islands#redDotIcon',
-                }}
-                clusters={{
-                  preset: 'islands#redClusterIcons',
-                }}
-                defaultFeatures={mapFeatures}
-                modules={[
-                  'objectManager.addon.objectsBalloon',
-                  'objectManager.addon.objectsHint',
-                ]}
-              />
+              {address.map(item => (
+                <Placemark
+                  key={item.id}
+                  geometry={[item.coordinates.lat, item.coordinates.lon]}
+                />
+              ))}
             </Map>
           </YMaps>
         </SMapWrapper>
