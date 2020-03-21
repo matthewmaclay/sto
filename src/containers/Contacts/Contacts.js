@@ -30,7 +30,7 @@ const SContactsWrapper = styled.div`
     padding-top: 50px;
   }
 `
-const containerRef = React.createRef()
+const mapRef = React.createRef()
 const Contacts = props => {
   const {
     contentfulMainPage: { address },
@@ -51,38 +51,18 @@ const Contacts = props => {
       }
     `
   )
-
-  const mapFeatures = address.reduce(
-    (acc, item) => [
-      ...acc,
-      {
-        type: 'Feature',
-        id: item.id,
-        geometry: {
-          type: 'Point',
-          coordinates: [],
-        },
-        properties: {
-          hintContent: item.title,
-          balloonContent: item.description,
-        },
-        options: {
-          opacity: 0.2,
-          strokeWidth: 2,
-          fillColor: '#00FF00',
-        },
-      },
-    ],
-    []
-  )
+  React.useEffect(() => {
+    console.log(mapRef)
+  }, [])
   return (
     <Section titlePage={props.titlePage}>
       <SWrapper>
-        <SMapWrapper ref={containerRef}>
+        <SMapWrapper>
           <YMaps>
             <Map
               width="100%"
               height="400px"
+              instanceRef={console.log}
               defaultState={{ center: [59.922792, 30.312237], zoom: 12 }}
             >
               {address.map(item => (

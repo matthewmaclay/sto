@@ -194,6 +194,7 @@ const SLogoLinksWrapper = styled.div`
     padding-left: 25px;
     margin-top: 8px;
     cursor: pointer;
+    text-decoration: none;
   }
   .big {
     .logoLinks__item {
@@ -247,17 +248,32 @@ const Links = () => (
 )
 export const LogoLinks = ({ className, withIcons, big }) => {
   const {
-    contentfulMainPage: { addressString, phone },
+    contentfulMainPage: {
+      addressString,
+      phone,
+      address: [
+        {
+          coordinates: { lat, lon },
+        },
+      ],
+    },
   } = useStaticQuery(
     graphql`
       query {
         contentfulMainPage {
           addressString
           phone
+          address {
+            coordinates {
+              lat
+              lon
+            }
+          }
         }
       }
     `
   )
+
   return (
     <SLogoLinksWrapper big={big}>
       <div className={`${big && 'big'} ${className}`}>
@@ -272,7 +288,15 @@ export const LogoLinks = ({ className, withIcons, big }) => {
           </div>
         </div>
       </div>
-      {big && <div className="accent">Построить маршрут</div>}
+      {big && (
+        <a
+          href={`https://yandex.ru/maps/?rtext=~${lat}%2C${lon}`}
+          className="accent"
+          target="_blank"
+        >
+          Построить маршрут
+        </a>
+      )}
     </SLogoLinksWrapper>
   )
 }
