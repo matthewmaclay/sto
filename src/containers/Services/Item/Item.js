@@ -5,7 +5,7 @@ import media from 'utils/media'
 import React from 'react'
 import Button from 'components/Button'
 import Text from 'components/Text'
-import Arrow from 'icons/Arrow'
+import Arrow from 'icons/arrow'
 import { Link } from 'gatsby'
 
 const SWrapper = styled.div`
