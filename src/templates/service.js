@@ -14,7 +14,6 @@ import Gallery from 'containers/Gallery'
 import Contacts from 'containers/Contacts'
 
 const ServiceTemplate = ({ data: { contentfulService } }) => {
-  console.log(contentfulService)
   return (
     <Layout>
       <SEO
@@ -23,7 +22,6 @@ const ServiceTemplate = ({ data: { contentfulService } }) => {
       >
         {' '}
       </SEO>
-
       <ServicePage {...contentfulService} />
     </Layout>
   )

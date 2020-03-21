@@ -1,10 +1,13 @@
+import isNode from 'detect-node'
 export function setParam(param, value) {
-  const url = new URL(window.location.href)
-  const params = new URLSearchParams(url.search)
-  params.set(param, value)
-  url.search = value ? params.toString() : ''
+  if (!isNode) {
+    const url = new URL(window.location.href)
+    const params = new URLSearchParams(url.search)
+    params.set(param, value)
+    url.search = value ? params.toString() : ''
 
-  history.pushState(null, null, url.toString())
+    history.pushState(null, null, url.toString())
+  }
 }
 
 const localCache = {}

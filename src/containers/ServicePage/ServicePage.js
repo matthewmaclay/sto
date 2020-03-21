@@ -71,7 +71,6 @@ const SSectionWithBorder = styled(Section)`
 `
 /* eslint-disable react/no-unknown-property, no-console */
 const ServicePage = ({ title, description, bus, passenger, offroad, img }) => {
-  console.log(img)
   return (
     <div itemscope="true" itemtype="http://schema.org/Product">
       <span itemprop="name" content={title}></span>
@@ -79,11 +78,13 @@ const ServicePage = ({ title, description, bus, passenger, offroad, img }) => {
         <SLayout>
           <SWrapper>
             <SContent>
-              <SImg
-                itemprop="image"
-                fluid={img.fluid}
-                backgroundColor={'#eeeeee'}
-              />
+              {img && (
+                <SImg
+                  itemprop="image"
+                  fluid={img.fluid}
+                  backgroundColor={'#eeeeee'}
+                />
+              )}
               <Text className="mb20" type="content20">
                 <div
                   itemprop="description"

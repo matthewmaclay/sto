@@ -19,7 +19,6 @@ export default function Section({
       ${props => props.theme.headings[type].s};
     }
   `
-  console.log('!!!', props)
   return (
     <SWrapper {...props} className={className}>
       {children}

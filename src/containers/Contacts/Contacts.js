@@ -51,9 +51,7 @@ const Contacts = props => {
       }
     `
   )
-  React.useEffect(() => {
-    console.log(mapRef)
-  }, [])
+
   return (
     <Section titlePage={props.titlePage}>
       <SWrapper>
@@ -62,7 +60,6 @@ const Contacts = props => {
             <Map
               width="100%"
               height="400px"
-              instanceRef={console.log}
               defaultState={{ center: [59.922792, 30.312237], zoom: 12 }}
             >
               {address.map(item => (
