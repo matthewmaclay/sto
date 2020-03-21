@@ -27,10 +27,14 @@ const SWrapper = styled.section`
     margin: auto;
   }
 `
-export default function Section({ children, ...props }) {
+export default function Section({ children, titleAttrs, ...props }) {
   return (
     <SWrapper {...props}>
-      {props.titlePage && <Heading type="h1"> {props.titlePage}</Heading>}
+      {props.titlePage && (
+        <Heading {...titleAttrs} type="h1">
+          {props.titlePage}
+        </Heading>
+      )}
       {children}
     </SWrapper>
   )

@@ -1,31 +1,9 @@
 module.exports.data = {
-  posts: `{
-    allContentfulPost(sort: { fields: [publishDate], order: DESC }) {
+  services: `{
+    allContentfulService {
       edges {
         node {
           slug
-          publishDate
-        }
-      }
-    }
-  }`,
-  pages: `{
-    allContentfulPage {
-      edges {
-        node {
-          slug
-        }
-      }
-    }
-  }`,
-  tags: `{
-    allContentfulTag {
-      edges {
-        node {
-          slug
-          post {
-            id
-          }
         }
       }
     }

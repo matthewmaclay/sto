@@ -2,7 +2,8 @@ import React from 'react'
 import styled from '@emotion/styled'
 import media from 'utils/media'
 import { Collapse } from 'react-collapse'
-
+import { setParam } from 'utils/common'
+import { get } from 'lodash'
 import Text from 'components/Text'
 import Tab from 'components/Tab'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -18,7 +19,9 @@ const SWrapper = styled.div`
   }
 `
 
-const SItemsWrapper = styled.div``
+const SItemsWrapper = styled.div`
+  padding-top: 50px;
+`
 const STabsWrapper = styled.div`
   overflow: scroll;
   display: flex;
@@ -48,6 +51,12 @@ const Tabs = props => {
           edges {
             node {
               id
+              img {
+                file {
+                  url
+                }
+              }
+              slug
               passenger
               offroad
               bus
@@ -61,35 +70,46 @@ const Tabs = props => {
       }
     `
   )
-  const [serviceType, seServiceType] = React.useState(
-    serviceCategories[0].node.id
-  )
+  const type = props.defaultServiceCategory || serviceCategories[0].node.id
 
+  const [serviceType, setServiceType] = React.useState(type)
+  /* eslint-disable react/no-unknown-property, no-console */
+
+  setParam('serviceCategory', type)
   return (
     <SWrapper id="tabs" className="mb20">
-      <STabsWrapper>
-        {serviceCategories.map(item => (
-          <Tab
-            setServiceType={seServiceType}
-            serviceType={serviceType}
-            key={item.id}
-            {...item.node}
-          />
-        ))}
-      </STabsWrapper>
-      <Collapse isOpened={!!serviceType}>
-        <SItemsWrapper>
-          {services
-            .filter(item => item.node.type && item.node.type.id === serviceType)
-            .map(item => (
-              <Item
-                key={item.id}
-                title={item.node.title}
-                cost={item.node[props.carType]}
-              />
-            ))}
-        </SItemsWrapper>
-      </Collapse>
+      <div itemscope="true" itemtype="http://schema.org/ItemList">
+        <link itemprop="url" href="/services" />
+        <span itemprop="numberOfItems" content={services.length}></span>
+        <STabsWrapper>
+          {serviceCategories.map(item => (
+            <Tab
+              setServiceType={setServiceType}
+              serviceType={serviceType}
+              key={item.id}
+              {...item.node}
+            />
+          ))}
+        </STabsWrapper>
+        <Collapse isOpened={!!serviceType}>
+          <SItemsWrapper>
+            {services
+              .filter(
+                item => item.node.type && item.node.type.id === serviceType
+              )
+              .map((item, index) => (
+                <Item
+                  index={index}
+                  slug={item.node.slug}
+                  key={item.node.id}
+                  title={item.node.title}
+                  cost={item.node[props.carType]}
+                  img={get(item, 'node.img.file.url')}
+                />
+              ))}
+          </SItemsWrapper>
+        </Collapse>
+      </div>
     </SWrapper>
   )
 }

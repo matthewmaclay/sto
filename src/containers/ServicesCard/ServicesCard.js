@@ -88,9 +88,10 @@ const SLinkToPrice = styled.div`
     animation: hover 1s ease-in-out infinite;
   }
 `
-
+/* eslint-disable react/no-unknown-property, no-console */
 const ServicesCard = props => {
-  const [carType, setCarType] = useState(false)
+  const searchParams = new URLSearchParams(props.location.search)
+  const [carType, setCarType] = useState(searchParams.get('carType'))
   return (
     <SCard>
       <SWrapper>
@@ -130,7 +131,10 @@ const ServicesCard = props => {
           </SCarsWrapper>
         </div>
         <Collapse isOpened={!!carType}>
-          <Tabs carType={carType} />
+          <Tabs
+            defaultServiceCategory={searchParams.get('serviceCategory')}
+            carType={carType}
+          />
           <Form />
         </Collapse>
       </SWrapper>

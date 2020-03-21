@@ -24,7 +24,7 @@ module.exports = {
       'Лучший автосервис на Нарвской по адресу Старо-Петергофский проспект 20, к.3',
     siteUrl: 'https://autohof24.ru',
     image: '/images/share.jpg',
-    basePath: '/',
+    basePath: '/services',
     menuLinks: [
       {
         name: 'Home',
@@ -39,9 +39,6 @@ module.exports = {
         slug: '/contact/',
       },
     ],
-    postsPerFirstPage: 7,
-    postsPerPage: 6,
-    basePath: '/',
   },
   plugins: [
     ...plugins,

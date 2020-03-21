@@ -45,7 +45,7 @@ export default function Gallery() {
         contentfulGallery {
           items {
             fluid(maxWidth: 1800) {
-              ...GatsbyContentfulFluid_noBase64
+              ...GatsbyContentfulFluid
             }
           }
         }

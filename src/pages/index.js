@@ -12,7 +12,7 @@ import Services from 'containers/Services'
 import Appointment from 'containers/Appointment'
 import Gallery from 'containers/Gallery'
 import Contacts from 'containers/Contacts'
-
+/* eslint-disable react/no-unknown-property, no-console */
 const Contact = ({
   data: {
     contentfulMainPage: { heroImg, title, description },
@@ -29,6 +29,7 @@ const Contact = ({
           href="https://unpkg.com/swiper/css/swiper.min.css"
         ></link>
       </SEO>
+
       <Hero image={heroImg}>
         <Heading className="mb20" type="h1">
           {title}
@@ -59,7 +60,7 @@ export const query = graphql`
       heroImg {
         id
         fluid(maxWidth: 1800) {
-          ...GatsbyContentfulFluid_noBase64
+          ...GatsbyContentfulFluid
         }
       }
     }

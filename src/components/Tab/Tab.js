@@ -22,6 +22,8 @@ export default function Tab({
 }) {
   const onClick = React.useCallback(() => {
     setServiceType(id)
+
+    localStorage && localStorage.setItem('serviceCategory', title)
   }, [activeType])
 
   const active = id === activeType

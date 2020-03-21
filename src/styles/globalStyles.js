@@ -334,4 +334,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   :root {
     --swiper-theme-color: rgb(241, 126, 1) !important;
   }
+  .hidden {
+    visibility: hidden;
+    display: none;
+  }
 `

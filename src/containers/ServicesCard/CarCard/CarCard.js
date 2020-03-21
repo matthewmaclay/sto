@@ -2,6 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 import media from 'utils/media'
+import { setParam } from 'utils/common'
 import Text from 'components/Text'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
@@ -56,8 +57,11 @@ const CarCard = props => {
   const onClick = React.useCallback(() => {
     if (activeType !== type) {
       setCarType(type)
+      setParam('carType', type)
+      localStorage && localStorage.setItem('carType', props.children)
     } else {
       setCarType(false)
+      setParam('carType', null)
     }
   }, [type, activeType])
   const active = type === activeType

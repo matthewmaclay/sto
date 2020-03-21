@@ -59,6 +59,10 @@ export default {
       o: 'font-size: 16px; line-height: 24px;',
       s: 'font-size: 20px; line-height: 24px;',
     },
+    content20: {
+      o: 'font-size: 16px; line-height: 20px;',
+      s: 'font-size: 20px; line-height: 34px;',
+    },
     24: {
       o: 'font-size: 24px; line-height: 36px;',
     },

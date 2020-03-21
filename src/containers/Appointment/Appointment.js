@@ -21,6 +21,14 @@ const SWrapper = styled.div`
       padding-right: 145px;
     }
   }
+  .fc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ${media.m} {
+      display: block;
+    }
+  }
 `
 
 export default function Appointment({ titlePage }) {
@@ -40,7 +48,7 @@ export default function Appointment({ titlePage }) {
           </Text>
         </div>
 
-        <SendForm className="mt20" />
+        <SendForm className="fc mt20" />
       </SWrapper>
     </Section>
   )

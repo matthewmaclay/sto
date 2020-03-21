@@ -13,7 +13,7 @@ const SHeader = styled.div`
   text-align: center;
 `
 
-const Contact = ({}) => {
+const Contact = ({ location }) => {
   return (
     <Layout>
       <SEO
@@ -33,7 +33,7 @@ const Contact = ({}) => {
         </SHeader>
       </Section>
       <Section withoutPadding>
-        <ServicesCard />
+        <ServicesCard location={location} />
       </Section>
     </Layout>
   )

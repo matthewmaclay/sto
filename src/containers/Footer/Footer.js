@@ -17,6 +17,7 @@ const SWrapper = styled.div`
   background: ${({ theme }) => theme.colors.pink};
   align-items: center;
   justify-content: center;
+  min-height: 700px;
   ${media.s} {
     flex-direction: row;
     align-items: flex-start;
