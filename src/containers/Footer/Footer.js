@@ -84,7 +84,7 @@ export default function Footer(props) {
           Вы можете оставить свой номер телефона,
           <br /> чтобы узнать все подробности вашего ремонта
         </Text>
-        <Button className="mb60" style="black">
+        <Button className="mb60" style="black" link to="/online/?from=footer">
           Записаться онлайн
         </Button>
 

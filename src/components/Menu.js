@@ -176,7 +176,16 @@ const SLogoLinksWrapper = styled.div`
   flex-direction: column;
   ${props => !props.big && 'align-items: center;'}
   justify-content: center;
-
+  .littlePhone {
+    .phone {
+      a {
+        font-size: 12px;
+        ${media.s} {
+          font-size: inherit;
+        }
+      }
+    }
+  }
   .logoLinks__item {
     position: relative;
     padding-left: 15px;
@@ -247,7 +256,7 @@ const Links = () => (
     </li>
   </ul>
 )
-export const LogoLinks = ({ className, withIcons, big }) => {
+export const LogoLinks = ({ className, withIcons, big, ...props }) => {
   const {
     contentfulMainPage: {
       addressString,
@@ -283,7 +292,11 @@ export const LogoLinks = ({ className, withIcons, big }) => {
             {withIcons && <Phone />}
             <a href={`tel:${phone}`}>{phone}</a>
           </div>
-          <div className="logoLinks__item adress">
+          <div
+            className={`logoLinks__item adress ${
+              props.addressClassName ? props.addressClassName : ''
+            }`}
+          >
             {withIcons && <Map />}
             <span>{addressString}</span>
           </div>
@@ -312,7 +325,12 @@ const Logo = () => (
     <a href="/" className="logo">
       <LogoSVG />
     </a>
-    <LogoLinks header withIcons className="s-only" />
+    <LogoLinks
+      className="littlePhone"
+      header
+      withIcons
+      addressClassName="s-only"
+    />
   </LogoBlock>
 )
 
