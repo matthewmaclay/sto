@@ -44,7 +44,7 @@ export default function Gallery() {
       query {
         contentfulGallery {
           items {
-            fluid(maxWidth: 1800) {
+            fluid(maxWidth: 500) {
               ...GatsbyContentfulFluid
             }
           }

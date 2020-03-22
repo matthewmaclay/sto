@@ -51,25 +51,34 @@ const Contacts = props => {
       }
     `
   )
-
+  const [isLoaded, setLoaded] = React.useState(false)
+  React.useEffect(() => {
+    if (props.lazy) {
+      setTimeout(() => setLoaded(), 3000)
+    } else {
+      setLoaded(true)
+    }
+  })
   return (
     <Section titlePage={props.titlePage}>
       <SWrapper>
         <SMapWrapper>
-          <YMaps>
-            <Map
-              width="100%"
-              height="400px"
-              defaultState={{ center: [59.922792, 30.312237], zoom: 12 }}
-            >
-              {address.map(item => (
-                <Placemark
-                  key={item.id}
-                  geometry={[item.coordinates.lat, item.coordinates.lon]}
-                />
-              ))}
-            </Map>
-          </YMaps>
+          {isLoaded && (
+            <YMaps>
+              <Map
+                width="100%"
+                height="400px"
+                defaultState={{ center: [59.922792, 30.312237], zoom: 12 }}
+              >
+                {address.map(item => (
+                  <Placemark
+                    key={item.id}
+                    geometry={[item.coordinates.lat, item.coordinates.lon]}
+                  />
+                ))}
+              </Map>
+            </YMaps>
+          )}
         </SMapWrapper>
         <SContactsWrapper>
           {!props.titlePage && (
