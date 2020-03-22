@@ -34,7 +34,7 @@ export function getLocalStorage(param, value) {
 }
 
 export function separateNumbers(str, withoutPrefix) {
-  if (!str) return ' —'
+  if (!str) return '—  '
   var parts = (str + '').split('.')
   var main = parts[0]
   var len = main.length

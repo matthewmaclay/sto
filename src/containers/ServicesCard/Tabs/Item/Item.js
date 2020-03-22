@@ -29,6 +29,9 @@ const SContent = styled.div`
   span {
     flex-grow: 1;
   }
+  .name {
+    padding-right: 50px;
+  }
   b {
     width: 150px;
     font-weight: bold;
@@ -51,7 +54,9 @@ const Item = ({ title, cost, slug, img, index, description }) => (
             src={img}
           />
         )}
-        <span itemprop="name">{title}</span>
+        <span className="name" itemprop="name">
+          {title}
+        </span>
         <span itemprop="description" content={description}></span>
         <div
           itemscope="true"
