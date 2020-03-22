@@ -26,7 +26,11 @@ export function setLocalStorage(param, value) {
   if (isNode) return null
   localCache[param] = value
 
-  window.localStorage && window.localStorage.setItem(param, value)
+  window.localStorage && window.localStorage.setItem(param)
+}
+export function getLocalStorage(param, value) {
+  if (isNode) return null
+  return window.localStorage && window.localStorage.getItem(param)
 }
 
 export function separateNumbers(str, withoutPrefix) {
