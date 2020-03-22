@@ -52,9 +52,13 @@ module.exports = async ({ graphql, actions }) => {
         </button>
         <h2>Цены на ${service.title}</h2>
         <ul>
-          <li>Легковой: ${service.passenger + 'руб.' || 0}</li>
-          <li>Внедорожник: ${service.offroad + 'руб.' || 0}</li>
-          <li>Микроавтобус: ${service.bus + 'руб.' || 0}</li>
+          ${
+            service.passenger
+              ? `<li>Легковой: ${service.passenger} руб. </li>`
+              : ''
+          }
+          ${service.offroad ? `<li>Внедорожник: ${service.offroad} </li>` : ''}
+          ${service.bus ? `  <li>Микроавтобус: ${service.bus} </li>` : ''}
         </ul>
       `,
       menu: [
@@ -79,7 +83,7 @@ module.exports = async ({ graphql, actions }) => {
         .filter(item => item.node.id !== service.id)
         .map(i => ({
           link: `https://autohof24.ru/services/${i.node.slug}/`,
-          image_url: i.node.img ? i.node.img.file : defaultImage,
+          image_url: i.node.img ? i.node.img.file.url : defaultImage,
           text: i.node.title,
         })),
     })
