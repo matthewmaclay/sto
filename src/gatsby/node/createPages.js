@@ -63,19 +63,19 @@ module.exports = async ({ graphql, actions }) => {
       `,
       menu: [
         {
-          link: 'http://autohof.ru/',
+          link: 'http://autohof24.ru/',
           text: 'Главная',
         },
         {
-          link: 'http://autohof.ru/services/',
+          link: 'http://autohof24.ru/services/',
           text: 'Все услуги',
         },
         {
-          link: 'http://autohof.ru/contacts/',
+          link: 'http://autohof24.ru/contacts/',
           text: 'Контакты',
         },
         {
-          link: 'http://autohof.ru/about/',
+          link: 'http://autohof24.ru/about/',
           text: 'О нас',
         },
       ],
