@@ -131,6 +131,10 @@ const Circle = styled.span`
 
 const LogoBlock = styled.span`
   display: flex;
+  transform: scale(0.9);
+  ${media.s} {
+    transform: none;
+  }
   .logoLinks .phone a {
     padding: 0;
     display: inline-block;
@@ -177,7 +181,20 @@ const SLogoLinksWrapper = styled.div`
   ${props => !props.big && 'align-items: center;'}
   justify-content: center;
   .littlePhone {
+    svg {
+      display: none;
+      position: relative;
+
+      ${media.s} {
+        display: inline-block;
+      }
+    }
     .phone {
+      left: -30px;
+      ${media.s} {
+        left: 0;
+        font-size: inherit;
+      }
       a {
         font-size: 12px;
         ${media.s} {
