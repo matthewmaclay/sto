@@ -44,6 +44,7 @@ const SEO = ({ title, description, image, children }) => {
       {/* General tags */}
       <meta name="image" content={image} />
       <meta name="description" content={metaDescription} />
+      <meta name="yandex-verification" content="387cf7c725a4512d" />
 
       {/* OpenGraph tags */}
       <meta property="og:title" content={title} />
