@@ -8,7 +8,6 @@ const STitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 20px;
   text-align: center;
   margin-top: 100px;
 `

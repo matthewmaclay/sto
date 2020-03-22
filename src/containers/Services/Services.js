@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import media from 'utils/media'
 import React from 'react'
 import Button from 'components/Button'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Item from './Item'
 
@@ -31,6 +32,37 @@ const SGrid = styled.div`
   }
 `
 export default function Services() {
+  const {
+    allContentfulService: { edges: services },
+  } = useStaticQuery(
+    graphql`
+      query {
+        allContentfulService(filter: { often: { eq: true } }, limit: 8) {
+          edges {
+            node {
+              id
+              img {
+                file {
+                  url
+                }
+              }
+              slug
+              passenger
+              offroad
+              description {
+                description
+              }
+              bus
+              title
+              type {
+                id
+              }
+            }
+          }
+        }
+      }
+    `
+  )
   return (
     <Section black>
       <Heading white center type="h2">
@@ -38,17 +70,16 @@ export default function Services() {
       </Heading>
       <SWrapper>
         <SGrid>
-          <Item title="Услуга" />
-          <Item title="Услуга" />
-          <Item title="Услуга" />
-          <Item title="Услуга" />
-          <Item title="Услуга" />
-          <Item title="Услуга" />
-          <Item title="Услуга" />
-          <Item title="Услуга" />
+          {services.map((item, index) => (
+            <Item
+              to={`/services/${item.node.slug}/?from=main`}
+              key={item.node.id}
+              title={item.node.title}
+            />
+          ))}
         </SGrid>
         <SWrapperButton>
-          <Button center link style="white" to="/services">
+          <Button center link style="white" to="/services?from=main">
             Все услуги
           </Button>
         </SWrapperButton>

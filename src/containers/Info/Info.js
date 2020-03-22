@@ -16,7 +16,7 @@ export default function Info(props) {
       <SWrapper>
         <Text className="mb20" type="24">
           Вы можете приехать к нам в любой день в любое время или &nbsp;
-          <Link className="accent" to="/online">
+          <Link className="accent" to="/online?from=about">
             записаться на ремонт онлайн.
           </Link>
         </Text>

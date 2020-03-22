@@ -5,7 +5,7 @@ import Text from 'components/Text'
 import Arrow from 'icons/arrow'
 import { Link } from 'gatsby'
 
-const SWrapper = styled.div`
+const SWrapper = styled(Link)`
   height: 100%;
   min-width: 300px;
 
@@ -18,6 +18,9 @@ const SWrapper = styled.div`
   border-radius: 12px;
   padding: 32px 24px;
   margin: auto;
+  text-decoration: none;
+  color: #ffffff;
+
   @media screen and (min-width: 564px) {
     margin: 0;
     min-width: 250px;
@@ -42,10 +45,7 @@ const SWrapper = styled.div`
     transition: fill 300ms ease-in-out;
     fill: ${props => props.theme.colors.orange};
   }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+
   &:hover {
     background: ${props => props.theme.colors.orange};
 
@@ -58,9 +58,9 @@ const SWrapper = styled.div`
 
 export default function Item({ title, to }) {
   return (
-    <SWrapper>
+    <SWrapper to={to}>
       <Text opacity type="20">
-        <Link to={to}> {title}</Link>
+        {title}
       </Text>
       <Arrow />
     </SWrapper>

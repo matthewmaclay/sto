@@ -23,13 +23,10 @@ const localCache = {}
 
 export function setLocalStorage(param, value) {
   if (localCache[param] === value) return null
+  if (isNode) return null
   localCache[param] = value
-  const url = new URL(window.location.href)
-  const params = new URLSearchParams(url.search)
-  params.set(param, value)
-  url.search = value ? params.toString() : ''
 
-  history.pushState(null, null, url.toString())
+  window.localStorage && window.localStorage.setItem(param, value)
 }
 
 export function separateNumbers(str, withoutPrefix) {

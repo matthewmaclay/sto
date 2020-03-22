@@ -7,6 +7,7 @@ import media from 'utils/media'
 
 import Phone from '../icons/phone'
 import Map from '../icons/map'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const Nav = styled.nav`
   height: ${({ theme, ...props }) =>
@@ -293,6 +294,12 @@ export const LogoLinks = ({ className, withIcons, big }) => {
           href={`https://yandex.ru/maps/?rtext=~${lat}%2C${lon}`}
           className="accent"
           target="_blank"
+          onClick={() =>
+            trackCustomEvent({
+              category: 'Построить маршрут',
+              action: 'Клик',
+            })
+          }
         >
           Построить маршрут
         </a>

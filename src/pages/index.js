@@ -4,6 +4,7 @@ import Heading from 'components/Heading'
 import Text from 'components/Text'
 import SEO from 'components/SEO'
 import Button from 'components/Button'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 import Why from 'containers/Why'
 import Hero from 'containers/Hero'
@@ -12,6 +13,8 @@ import Services from 'containers/Services'
 import Appointment from 'containers/Appointment'
 import Gallery from 'containers/Gallery'
 import Contacts from 'containers/Contacts'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+
 /* eslint-disable react/no-unknown-property, no-console */
 const Contact = ({
   data: {
@@ -37,14 +40,24 @@ const Contact = ({
         <Text className="mb30" tag="h2" type="20">
           {description}
         </Text>
-        <Button link to="/online">
-          Узнать стоимость ТО
-        </Button>
+        <AnchorLink href="#form">
+          <Button
+            onClick={() =>
+              trackCustomEvent({
+                category: 'Главная',
+                action: 'Клик по первой кнопке',
+              })
+            }
+          >
+            Узнать стоимость ТО
+          </Button>
+        </AnchorLink>
       </Hero>
       <Why />
       <Services />
       <Info />
       <Gallery />
+      <div id="form"></div>
       <Appointment />
       <Contacts lazy />
     </Layout>

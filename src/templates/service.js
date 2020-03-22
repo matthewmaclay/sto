@@ -10,9 +10,7 @@ const ServiceTemplate = ({ data: { contentfulService } }) => {
       <SEO
         title={contentfulService.title + titlePosfix}
         description={`${contentfulService.title}. Сделаем быстро, качественно, дешего! Санкт-Петербург, метро Нарвская. Сегодня акции.`}
-      >
-        {' '}
-      </SEO>
+      ></SEO>
       <ServicePage {...contentfulService} />
     </Layout>
   )

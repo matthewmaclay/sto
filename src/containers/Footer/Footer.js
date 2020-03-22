@@ -1,4 +1,5 @@
 import Section from 'components/Section'
+import { useStaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { LogoLinks } from 'components/Menu'
 import Text from 'components/Text'
@@ -44,6 +45,37 @@ const SInfo = styled.div`
   }
 `
 export default function Footer(props) {
+  const {
+    allContentfulService: { edges: services },
+  } = useStaticQuery(
+    graphql`
+      query {
+        allContentfulService(filter: { often: { eq: true } }, limit: 8) {
+          edges {
+            node {
+              id
+              img {
+                file {
+                  url
+                }
+              }
+              slug
+              passenger
+              offroad
+              description {
+                description
+              }
+              bus
+              title
+              type {
+                id
+              }
+            }
+          }
+        }
+      }
+    `
+  )
   return (
     <SWrapper>
       <SInfo>
@@ -60,8 +92,14 @@ export default function Footer(props) {
       </SInfo>
       <SServices>
         <Collapse>
-          <Item>Покраска</Item>
-          <Item>Ремонт</Item>
+          {services.map((item, index) => (
+            <Item
+              key={item.node.id}
+              to={`/services/${item.node.slug}/?from=footer`}
+            >
+              {item.node.title}
+            </Item>
+          ))}
         </Collapse>
       </SServices>
     </SWrapper>

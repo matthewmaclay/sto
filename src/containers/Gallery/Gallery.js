@@ -5,6 +5,7 @@ import styled from '@emotion/styled'
 import media from 'utils/media'
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const SWrapper = styled.div`
   margin-bottom: 120px;
@@ -75,7 +76,12 @@ export default function Gallery() {
         },
       },
     })
-    window.swiper = swiper
+    swiper.on('slideChange', function() {
+      trackCustomEvent({
+        category: 'Галлерея',
+        action: 'Смена слайда',
+      })
+    })
   }, [])
   return (
     <Section withoutPadding>

@@ -2,9 +2,10 @@ import React from 'react'
 import Img from 'gatsby-image'
 import styled from '@emotion/styled'
 import media from 'utils/media'
-import { setParam } from 'utils/common'
+import { setParam, setLocalStorage } from 'utils/common'
 import Text from 'components/Text'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const Wrapper = styled(AnchorLink)`
   width: 190px;
@@ -55,10 +56,15 @@ const Wrapper = styled(AnchorLink)`
 const CarCard = props => {
   const { type, activeType, setCarType } = props
   const onClick = React.useCallback(() => {
+    trackCustomEvent({
+      category: 'Услуги',
+      action: 'Выбор авто',
+      label: type,
+    })
     if (activeType !== type) {
       setCarType(type)
       setParam('carType', type)
-      localStorage && localStorage.setItem('carType', props.children)
+      setLocalStorage('carType', props.children)
     } else {
       setCarType(false)
       setParam('carType', null)

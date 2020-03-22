@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
+import { setLocalStorage } from 'utils/common'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const SWrapper = styled.div`
   cursor: pointer;
@@ -23,7 +25,12 @@ export default function Tab({
   const onClick = React.useCallback(() => {
     setServiceType(id)
 
-    localStorage && localStorage.setItem('serviceCategory', title)
+    trackCustomEvent({
+      category: 'Услуги',
+      action: 'Выбор категории',
+      label: title,
+    })
+    setLocalStorage('serviceCategory', title)
   }, [activeType])
 
   const active = id === activeType

@@ -20,7 +20,7 @@ export default function Footer({ to, children }) {
   return (
     <SWrapper>
       <Text type="14">
-        <Link to={`#`}>{children}</Link>
+        <Link to={to}>{children}</Link>
       </Text>
     </SWrapper>
   )

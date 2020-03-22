@@ -4,7 +4,7 @@ import Section from 'components/Section'
 import Text from 'components/Text'
 import styled from '@emotion/styled'
 import media from 'utils/media'
-import { fromRichTextToText } from 'utils/common'
+import { fromRichTextToText, setLocalStorage } from 'utils/common'
 import Form from 'containers/ServicesCard/Form'
 import PassengerCar from 'icons/PassengerCar'
 import OffroadCar from 'icons/offroadCar'
@@ -12,6 +12,9 @@ import MicroCar from 'icons/microCar'
 
 import CarCard from './CarCard'
 import Button from 'components/Button/Button'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
+import Arrow from 'icons/arrow'
 
 const SImg = styled(Img)`
   margin-bottom: 50px;
@@ -70,13 +73,37 @@ const SSectionWithBorder = styled(Section)`
     margin-bottom: 120px;
   }
 `
+const SBackArrow = styled.div`
+  position: absolute;
+  top: -200px;
+  left: 50px;
+
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  svg {
+    transform: rotate(180deg);
+    margin-right: 16px;
+    fill: #959595;
+  }
+  span {
+    color: #959595;
+  }
+`
+
 /* eslint-disable react/no-unknown-property, no-console */
 const ServicePage = ({ title, description, bus, passenger, offroad, img }) => {
+  setLocalStorage('serviceTitle', title)
   return (
     <div itemscope="true" itemtype="http://schema.org/Product">
       <span itemprop="name" content={title}></span>
+
       <Section titlePage={title}>
         <SLayout>
+          <SBackArrow onClick={() => window.history.back()}>
+            <Arrow></Arrow>
+            <span>К услугам</span>
+          </SBackArrow>
           <SWrapper>
             <SContent>
               {img && (
@@ -133,15 +160,24 @@ const ServicePage = ({ title, description, bus, passenger, offroad, img }) => {
                 >
                   Микроавтобусы и мультивены
                 </CarCard>
-                <Button link to="/online">
-                  Записаться
-                </Button>
+                <AnchorLink
+                  onClick={() => {
+                    trackCustomEvent({
+                      category: 'Страница Услуги',
+                      action: 'Клик на "записаться" под ценами',
+                    })
+                  }}
+                  href="#form"
+                >
+                  <Button>Записаться</Button>
+                </AnchorLink>
               </div>
             </SSideBar>
           </SWrapper>
         </SLayout>
       </Section>
       <SSectionWithBorder withoutPadding>
+        <div id="form"></div>
         <Form />
       </SSectionWithBorder>
     </div>
