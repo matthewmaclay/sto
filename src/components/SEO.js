@@ -33,6 +33,7 @@ const SEO = ({ title, description, image, children }) => {
     <Helmet
       htmlAttributes={{
         lang: `ru`,
+        prefix: 'og: http://ogp.me/ns#',
       }}
       title={title}
       defaultTitle={site.siteMetadata.title}

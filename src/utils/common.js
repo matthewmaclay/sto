@@ -12,6 +12,7 @@ export function setParam(param, value) {
     history.pushState(null, null, url.toString())
   }
 }
+export const titlePosfix = ' | Autohof24 | Метро Нарвская'
 
 export function fromRichTextToText(richText) {
   if (!richText) return null
