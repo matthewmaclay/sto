@@ -42,7 +42,7 @@ module.exports = async ({ graphql, actions }) => {
         fromRichTextToText(service.description.description) +
         `
         <button
-          formaction="https://autohof24/online"
+          formaction="https://autohof24.ru/online"
           data-background-color="#F17E01"
           data-color="white"
           data-turbo="false"
