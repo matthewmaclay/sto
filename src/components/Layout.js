@@ -70,7 +70,7 @@ const Layout = props => {
           </span>
           <span itemprop="telephone">{contentfulMainPage.phone}</span>
           <span itemprop="priceRange">1000</span>
-          <img itemprop="logo" src="/images/share.png" alt="hotel logo" />
+          <span itemprop="logo" src="/images/share.png" alt="hotel logo" />
           <span
             itemprop="image"
             content={contentfulMainPage.heroImg.file.url}
