@@ -5,6 +5,7 @@ import Menu from '../components/Menu'
 import Footer from 'containers/Footer'
 import { globalStyles } from '../styles/globalStyles.js'
 import { useStaticQuery, graphql } from 'gatsby'
+import { YMInitializer } from 'react-yandex-metrika'
 
 const Root = styled.div`
   font-family: ${props => props.theme.fonts.body};
@@ -84,6 +85,10 @@ const Layout = props => {
         </div>
         <Footer />
         <Global styles={globalStyles} />
+        <YMInitializer
+          options={{ webvisor: true, defer: true }}
+          accounts={[61192993]}
+        />
       </div>
     </Root>
   )

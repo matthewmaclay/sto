@@ -50,6 +50,7 @@
     "react-helmet": "^5.2.1",
     "react-input-mask": "^2.0.4",
     "react-yandex-maps": "^4.2.0",
+    "react-yandex-metrika": "^2.6.0",
     "swiper": "^5.3.6",
     "theme-ui": "^0.3.1"
   },
