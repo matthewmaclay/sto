@@ -30,6 +30,7 @@ const SWrapper = styled.div`
 const SSideBar = styled.div`
   max-width: 306px;
   margin-bottom: 80px;
+  height: 100%;
   ${media.s} {
     margin-left: 144px;
     margin-bottom: 0;
