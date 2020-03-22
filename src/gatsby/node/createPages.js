@@ -79,7 +79,7 @@ module.exports = async ({ graphql, actions }) => {
         .filter(item => item.node.id !== service.id)
         .map(i => ({
           link: `https://autohof24.ru/services/${i.node.slug}/`,
-          image_url: i.node.img && i.node.img.file.url,
+          image_url: i.node.img ? i.node.img.file : defaultImage,
           text: i.node.title,
         })),
     })
