@@ -5,6 +5,7 @@ import Button from 'components/Button'
 import { Collapse } from 'react-collapse'
 import { Link } from 'gatsby'
 import { getLocalStorage } from 'utils/common'
+import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const SWrapper = styled.form`
   ${props =>
@@ -25,6 +26,7 @@ const SWrapper = styled.form`
   span {
   }
 `
+
 const inputRef = React.createRef()
 export default function SendForm({ children, to, link, ...props }) {
   const [error, setError] = React.useState(false)
@@ -70,9 +72,17 @@ export default function SendForm({ children, to, link, ...props }) {
         }
       })
       .then(() => {
+        trackCustomEvent({
+          category: 'request',
+          action: 'success',
+        })
         setSuccess(true)
       })
       .catch(() => {
+        trackCustomEvent({
+          category: 'request',
+          action: 'failed',
+        })
         setError(true)
       })
       .finally(() => {
