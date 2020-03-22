@@ -46,7 +46,7 @@ const Contact = ({
       <Info />
       <Gallery />
       <Appointment />
-      <Contacts />
+      <Contacts lazy />
     </Layout>
   )
 }

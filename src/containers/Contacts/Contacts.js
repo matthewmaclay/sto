@@ -54,7 +54,7 @@ const Contacts = props => {
   const [isLoaded, setLoaded] = React.useState(false)
   React.useEffect(() => {
     if (props.lazy) {
-      setTimeout(() => setLoaded(), 3000)
+      setTimeout(() => setLoaded(true), 3000)
     } else {
       setLoaded(true)
     }
