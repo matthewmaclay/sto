@@ -1,5 +1,12 @@
 module.exports.data = {
   services: `{
+    contentfulMainPage {
+      heroImg {
+        file {
+          url
+        }
+      }
+    }
     allContentfulService {
       edges {
         node {

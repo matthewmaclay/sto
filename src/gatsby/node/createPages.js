@@ -1,7 +1,6 @@
 const config = require('../../../gatsby-config')
 const query = require('../data/query')
 const path = require(`path`)
-const { paginate } = require(`gatsby-awesome-pagination`)
 const TR = require('turbo-rss')
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer')
 
@@ -14,10 +13,10 @@ function fromRichTextToText(richText) {
 
 module.exports = async ({ graphql, actions }) => {
   const { createPage } = actions
-  console.log('!!!!!!!')
   var feed = new TR({
-    title: 'title',
-    description: 'description',
+    title: 'Автосервис на Нарвской | Autohof24 | Санкт-Петербург',
+    description:
+      'Техническое обслуживание автомобилей, замена комплектующих, шиномонтаж. Быстро, качественно, дешево!',
     link: 'https://autohof24.ru/',
   })
 
@@ -26,29 +25,14 @@ module.exports = async ({ graphql, actions }) => {
   // Create a page for each "post"
   const servicesQuery = await graphql(query.data.services)
   const services = servicesQuery.data.allContentfulService.edges
-  /*
-  
-   id
-          slug
-          passenger
-          offroad
-          bus
-          title
-          description{
-            description
-          }
-          img {
-            file {
-              url
-            }
-          }
-  */
+  const defaultImage = servicesQuery.data.contentfulMainPage.heroImg.file.url
+
   services.forEach((post, i, array) => {
     const service = post.node
 
     feed.item({
       title: service.title,
-      image_url: service.img ? service.img.file.url : undefined,
+      image_url: service.img ? service.img.file.url : defaultImage,
       url: `https://autohof24.ru/services/${service.slug}/`,
       content:
         `<div itemscope itemtype="http://schema.org/Rating">
@@ -68,9 +52,9 @@ module.exports = async ({ graphql, actions }) => {
         </button>
         <h2>Цены на ${service.title}</h2>
         <ul>
-          <li>Легковой: ${service.passenger || 0}</li>
-          <li>Внедорожник: ${service.offroad || 0}</li>
-          <li>Микроавтобус: ${service.bus || 0}</li>
+          <li>Легковой: ${service.passenger + 'руб.' || 0}</li>
+          <li>Внедорожник: ${service.offroad + 'руб.' || 0}</li>
+          <li>Микроавтобус: ${service.bus + 'руб.' || 0}</li>
         </ul>
       `,
       menu: [
