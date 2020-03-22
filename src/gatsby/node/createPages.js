@@ -48,9 +48,13 @@ module.exports = async ({ graphql, actions }) => {
 
     feed.item({
       title: service.title,
-      image_url: service.img && service.img.file.url,
+      image_url: service.img ? service.img.file.url : undefined,
       url: `https://autohof24.ru/services/${service.slug}/`,
       content:
+        `<div itemscope itemtype="http://schema.org/Rating">
+            <meta itemprop="ratingValue" content="9">
+            <meta itemprop="bestRating" content="10">
+          </div>` +
         fromRichTextToText(service.description.description) +
         `
         <button
@@ -59,29 +63,15 @@ module.exports = async ({ graphql, actions }) => {
           data-color="white"
           data-turbo="false"
           data-primary="true"
-          disabled
         >
           Записаться на сайте
         </button>
-        <p>Цены по категориям</p>
-      <table data-invisible="false">
-    <tr>
-        <th>Легковой</th>
-        <th>Страна</th>
-        <th>Микроавтобус</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Внедорожник</td>
-        <td>Микроавтобус</td>
-    </tr>
-    <tr>
-        <td>${service.passenger}</td>
-        <td>${service.offroad}</td>
-        <td>${service.bus}</td>
-    </tr>
-
-</table>
+        <h2>Цены на ${service.title}</h2>
+        <ul>
+          <li>Легковой: ${service.passenger || 0}</li>
+          <li>Внедорожник: ${service.offroad || 0}</li>
+          <li>Микроавтобус: ${service.bus || 0}</li>
+        </ul>
       `,
       menu: [
         {
