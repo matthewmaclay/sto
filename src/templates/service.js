@@ -1,24 +1,14 @@
 import React from 'react'
 import Layout from 'components/Layout'
-import Heading from 'components/Heading'
-import Text from 'components/Text'
 import SEO from 'components/SEO'
-import Button from 'components/Button'
-
 import ServicePage from 'containers/ServicePage'
-
-import Info from 'containers/Info'
-import Services from 'containers/Services'
-import Appointment from 'containers/Appointment'
-import Gallery from 'containers/Gallery'
-import Contacts from 'containers/Contacts'
 
 const ServiceTemplate = ({ data: { contentfulService } }) => {
   return (
     <Layout>
       <SEO
-        title="Автосервис на Нарвской"
-        description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
+        title={contentfulService.title}
+        description={`${contentfulService.title} быстро, качественно, дешего!`}
       >
         {' '}
       </SEO>

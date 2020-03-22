@@ -48,7 +48,7 @@ const SEO = ({ title, description, image, children }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:description" content={metaDescription} />
-      <meta property="og:url" content={site.siteMetadata.title} />
+      <meta property="og:url" content={site.siteMetadata.siteUrl} />
       <meta property="og:site_name" content={site.siteMetadata.title} />
       <meta property="og:type" content="website" />
 
