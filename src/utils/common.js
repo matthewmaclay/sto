@@ -1,4 +1,7 @@
 import isNode from 'detect-node'
+
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+
 export function setParam(param, value) {
   if (!isNode) {
     const url = new URL(window.location.href)
@@ -8,6 +11,11 @@ export function setParam(param, value) {
 
     history.pushState(null, null, url.toString())
   }
+}
+
+export function fromRichTextToText(richText) {
+  if (!richText) return null
+  return documentToHtmlString(JSON.parse(richText)).replace(/(<([^>]+)>)/gi, '')
 }
 
 const localCache = {}

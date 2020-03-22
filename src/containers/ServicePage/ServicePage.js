@@ -4,11 +4,11 @@ import Section from 'components/Section'
 import Text from 'components/Text'
 import styled from '@emotion/styled'
 import media from 'utils/media'
+import { fromRichTextToText } from 'utils/common'
 import Form from 'containers/ServicesCard/Form'
 import PassengerCar from 'icons/PassengerCar'
 import OffroadCar from 'icons/offroadCar'
 import MicroCar from 'icons/microCar'
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 
 import CarCard from './CarCard'
 import Button from 'components/Button/Button'
@@ -89,9 +89,9 @@ const ServicePage = ({ title, description, bus, passenger, offroad, img }) => {
                 <div
                   itemprop="description"
                   dangerouslySetInnerHTML={{
-                    __html: documentToHtmlString(
-                      description ? JSON.parse(description.description) : ''
-                    ).replace(/(<([^>]+)>)/gi, ''),
+                    __html: fromRichTextToText(
+                      description && description.description
+                    ),
                   }}
                 ></div>
               </Text>

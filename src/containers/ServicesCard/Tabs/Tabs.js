@@ -2,12 +2,11 @@ import React from 'react'
 import styled from '@emotion/styled'
 import media from 'utils/media'
 import { Collapse } from 'react-collapse'
-import { setParam } from 'utils/common'
+import { setParam, fromRichTextToText } from 'utils/common'
 import { get } from 'lodash'
 import Text from 'components/Text'
 import Tab from 'components/Tab'
 import { useStaticQuery, graphql } from 'gatsby'
-
 import Item from './Item'
 
 const SWrapper = styled.div`
@@ -59,6 +58,9 @@ const Tabs = props => {
               slug
               passenger
               offroad
+              description {
+                description
+              }
               bus
               title
               type {
@@ -104,6 +106,9 @@ const Tabs = props => {
                   key={item.node.id}
                   title={item.node.title}
                   cost={item.node[props.carType]}
+                  description={fromRichTextToText(
+                    get(item, 'node.description.description')
+                  )}
                   img={get(item, 'node.img.file.url')}
                 />
               ))}

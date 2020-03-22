@@ -35,7 +35,7 @@ const SContent = styled.div`
   }
 `
 /* eslint-disable react/no-unknown-property, no-console */
-const Item = ({ title, cost, slug, img, index }) => (
+const Item = ({ title, cost, slug, img, index, description }) => (
   <div
     itemprop="itemListElement"
     itemscope="true"
@@ -52,15 +52,19 @@ const Item = ({ title, cost, slug, img, index }) => (
           />
         )}
         <span itemprop="name">{title}</span>
-
+        <span itemprop="description" content={description}></span>
         <div
           itemscope="true"
           itemprop="offers"
           itemType="http://schema.org/Offer"
         >
-          <span itemprop="price" content={cost}>
-            {<b>{separateNumbers(cost)}</b>}
-          </span>
+          <span
+            className="hidden"
+            itemprop="priceCurrency"
+            content="RUB"
+          ></span>
+          <span itemprop="price" content={cost || 0}></span>
+          <span>{<b>{separateNumbers(cost)}</b>}</span>
         </div>
       </SContent>
     </STitleWrapper>

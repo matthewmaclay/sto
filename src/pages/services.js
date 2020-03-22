@@ -17,8 +17,8 @@ const Contact = ({ location }) => {
   return (
     <Layout>
       <SEO
-        title="Автосервис на Нарвской"
-        description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
+        title="Все услуги | Autohof24"
+        description="Вы можете выбрать тип вашего авто и узнать цену услуги"
       ></SEO>
       <Section black>
         <SHeader>

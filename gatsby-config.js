@@ -19,7 +19,7 @@ try {
 
 module.exports = {
   siteMetadata: {
-    title: 'AUTOHOF 24',
+    title: 'Autohof 24',
     description:
       'Лучший автосервис на Нарвской по адресу Старо-Петергофский проспект 20, к.3',
     siteUrl: 'https://autohof24.ru',

@@ -3,9 +3,16 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const SEO = ({ title, description, image, children }) => {
-  const { site } = useStaticQuery(
+  const { site, contentfulMainPage } = useStaticQuery(
     graphql`
       query {
+        contentfulMainPage {
+          heroImg {
+            file {
+              url
+            }
+          }
+        }
         site {
           siteMetadata {
             title
@@ -18,7 +25,7 @@ const SEO = ({ title, description, image, children }) => {
     `
   )
 
-  const defaultImage = site.siteMetadata.siteUrl + site.siteMetadata.image
+  const defaultImage = contentfulMainPage.heroImg.file.url
   const metaDescription = description || site.siteMetadata.description
   const metaImage = image || defaultImage
 
@@ -41,6 +48,9 @@ const SEO = ({ title, description, image, children }) => {
       <meta property="og:title" content={title} />
       <meta property="og:image" content={metaImage} />
       <meta property="og:description" content={metaDescription} />
+      <meta property="og:url" content={site.siteMetadata.title} />
+      <meta property="og:site_name" content={site.siteMetadata.title} />
+      <meta property="og:type" content="website" />
 
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
