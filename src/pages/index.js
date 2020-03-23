@@ -18,6 +18,9 @@ import AnchorLink from 'react-anchor-link-smooth-scroll'
 /* eslint-disable react/no-unknown-property, no-console */
 const Contact = ({
   data: {
+    site: {
+      siteMetadata: { siteUrl },
+    },
     contentfulMainPage: { heroImg, title, description },
   },
 }) => {
@@ -27,6 +30,7 @@ const Contact = ({
         title="Автосервис на Нарвской"
         description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
       >
+        <link rel="canonical" href={siteUrl} />
         <link
           rel="stylesheet"
           href="https://unpkg.com/swiper/css/swiper.min.css"
@@ -66,6 +70,11 @@ const Contact = ({
 
 export const query = graphql`
   query SiteTitleQuery {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     contentfulMainPage {
       id
       title

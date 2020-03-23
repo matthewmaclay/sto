@@ -8,7 +8,9 @@ import Contacts from 'containers/Contacts'
 const Contact = () => {
   return (
     <Layout>
-      <SEO title="Контакты | Autohof24" description="Как нас найти?"></SEO>
+      <SEO title="Контакты | Autohof24" description="Как нас найти?">
+        <link rel="canonical" href="https://autohof24.ru/contacts/" />
+      </SEO>
       <Contacts titlePage="Контакты" />
     </Layout>
   )

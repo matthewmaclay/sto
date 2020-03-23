@@ -11,6 +11,7 @@ const Contact = () => {
         title="О нас | Autohof24"
         description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
       >
+        <link rel="canonical" href="https://autohof24.ru/about/" />
         <link
           rel="stylesheet"
           href="https://unpkg.com/swiper/css/swiper.min.css"

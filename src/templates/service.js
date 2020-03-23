@@ -5,12 +5,18 @@ import ServicePage from 'containers/ServicePage'
 import { titlePosfix } from 'utils/common'
 
 const ServiceTemplate = ({ data: { contentfulService } }) => {
+  console.log(contentfulService)
   return (
     <Layout>
       <SEO
         title={contentfulService.title + titlePosfix}
         description={`${contentfulService.title}. Сделаем быстро, качественно, дешего! Санкт-Петербург, метро Нарвская. Сегодня акции.`}
-      ></SEO>
+      >
+        <link
+          rel="canonical"
+          href={`https://autohof24.ru/services/${contentfulService.slug}/`}
+        />
+      </SEO>
       <ServicePage {...contentfulService} />
     </Layout>
   )
@@ -24,6 +30,7 @@ export const query = graphql`
         description
       }
       passenger
+      slug
       bus
       title
       offroad
