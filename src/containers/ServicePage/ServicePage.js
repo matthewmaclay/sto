@@ -40,7 +40,7 @@ const SSideBar = styled.div`
   }
   .sticky {
     position: sticky;
-    top: 240px;
+    top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
