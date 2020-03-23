@@ -5,6 +5,7 @@ import LogoSVG from '../icons/logo'
 import { slide as Slide } from 'react-burger-menu'
 import media from 'utils/media'
 
+/* eslint-disable react/no-unknown-property, no-console */
 import Phone from '../icons/phone'
 import Map from '../icons/map'
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
@@ -278,6 +279,7 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
     contentfulMainPage: {
       addressString,
       phone,
+      heroImg,
       address: [
         {
           coordinates: { lat, lon },
@@ -290,6 +292,11 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
         contentfulMainPage {
           addressString
           phone
+          heroImg {
+            file {
+              url
+            }
+          }
           address {
             coordinates {
               lat
@@ -303,11 +310,14 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
 
   return (
     <SLogoLinksWrapper big={big}>
+      <span itemProp="image" content={heroImg.file.url} alt="hero img" />
       <div className={`${big && 'big'} ${className}`}>
         <div className="logoLinks">
           <div className="logoLinks__item phone">
             {withIcons && <Phone />}
-            <a href={`tel:${phone}`}>{phone}</a>
+            <a itemProp={!big && 'telephone'} href={`tel:${phone}`}>
+              {phone}
+            </a>
           </div>
           <div
             className={`logoLinks__item adress ${
@@ -315,7 +325,7 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
             }`}
           >
             {withIcons && <Map />}
-            <span>{addressString}</span>
+            <span itemProp={!big && 'address'}>{addressString}</span>
           </div>
         </div>
       </div>
@@ -353,19 +363,30 @@ const Logo = () => (
 
 const Menu = ({ absolute }) => {
   return (
-    <Nav absolute={absolute}>
-      <Logo />
-      <div className="desktopLinks">
-        <Links />
-      </div>
-
-      <div className="mobileLinks">
-        <Slide width={'100vw'} right>
+    <div
+      iteprop="provider"
+      itemscope="true"
+      itemtype="http://schema.org/LocalBusiness"
+    >
+      <Nav absolute={absolute}>
+        <span className="hidden">
+          <span itemProp="name">Autohof24 &nbsp;</span>
+          <span itemProp="priceRange" content="1000"></span>
+          <span itemProp="logo" src="/images/share.png" alt="logo" />
+        </span>
+        <Logo />
+        <div className="desktopLinks">
           <Links />
-          <LogoLinks header />
-        </Slide>
-      </div>
-    </Nav>
+        </div>
+
+        <div className="mobileLinks">
+          <Slide width={'100vw'} right>
+            <Links />
+            <LogoLinks header />
+          </Slide>
+        </div>
+      </Nav>
+    </div>
   )
 }
 

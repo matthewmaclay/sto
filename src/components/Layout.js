@@ -59,25 +59,6 @@ const Layout = props => {
     <Root className="siteRoot">
       <div itemscope="true" itemtype="http://schema.org/Service">
         <meta itemprop="serviceType" content="Автосервис" />
-        <span
-          className="hidden"
-          itemprop="provider"
-          itemscope="true"
-          itemtype="http://schema.org/LocalBusiness"
-        >
-          <span itemprop="name">Autohof24</span>
-          <span itemprop="address">
-            Санкт-Петербург {contentfulMainPage.addressString}
-          </span>
-          <span itemprop="telephone">{contentfulMainPage.phone}</span>
-          <span itemprop="priceRange">1000</span>
-          <span itemprop="logo" src="/images/share.png" alt="hotel logo" />
-          <span
-            itemprop="image"
-            content={contentfulMainPage.heroImg.file.url}
-            alt="hotel logo"
-          />
-        </span>
 
         <div className="siteContent">
           <Menu absolute={props.absoluteNav} />
