@@ -47,11 +47,11 @@ const Item = ({ title, cost, slug, img, index, description }) => (
     <STitleWrapper itemprop="url" to={`/services/${slug}/`}>
       <SContent>
         {img && (
-          <img
+          <span
             className="hidden"
             alt="Photo of product"
             itemprop="image"
-            src={img}
+            content={img}
           />
         )}
         <span className="name" itemprop="name">
