@@ -41,9 +41,14 @@ const Contact = ({
         <Heading className="mb20" type="h1">
           {title}
         </Heading>
-        <Text className="mb30" tag="h2" type="20">
-          {description}
-        </Text>
+        <Text
+          className="mb30"
+          tag="h2"
+          type="20"
+          dangerouslySetInnerHTML={{
+            __html: description,
+          }}
+        ></Text>
         <AnchorLink href="#form">
           <Button
             onClick={() =>
