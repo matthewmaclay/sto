@@ -263,11 +263,12 @@ const STriangle = styled.span`
     position: absolute;
   }
   select {
+    height: 20px;
     top: -15px;
-    left: -5px;
+    left: -15px;
     position: absolute;
     opacity: 0;
-    width: 10px;
+    width: 30px;
   }
   @keyframes phoneTriangle {
     0% {
@@ -357,12 +358,14 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
               <a ref={phoneLinkRef} href=""></a>
               <select
                 name="forma"
+                data-selected="0"
                 onChange={e => {
                   console.log(phoneLinkRef.current)
                   phoneLinkRef.current.href = e.target.value
                   phoneLinkRef.current.click()
                 }}
               >
+                <option>Выберите номер телефона</option>
                 {additionalPhones.map(item => (
                   <option key={item} value={`tel:${item}`}>
                     {item}
