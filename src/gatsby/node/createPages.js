@@ -2,6 +2,7 @@ const config = require('../../../gatsby-config')
 const query = require('../data/query')
 const path = require(`path`)
 const TR = require('turbo-rss')
+const { get } = require('lodash')
 const { documentToHtmlString } = require('@contentful/rich-text-html-renderer')
 
 const fs = require('fs')
@@ -32,14 +33,14 @@ module.exports = async ({ graphql, actions }) => {
 
     feed.item({
       title: service.title,
-      image_url: service.img ? service.img.file.url : defaultImage,
+      image_url: get(service, 'img.file.url') || defaultImage,
       url: `https://autohof24.ru/services/${service.slug}/`,
       content:
         `<div itemscope itemtype="http://schema.org/Rating">
             <meta itemprop="ratingValue" content="9">
             <meta itemprop="bestRating" content="10">
           </div>` +
-        fromRichTextToText(service.description.description) +
+        fromRichTextToText(get(service, 'description.description')) +
         `
         <button
           formaction="https://autohof24.ru/online"
@@ -79,13 +80,6 @@ module.exports = async ({ graphql, actions }) => {
           text: 'О нас',
         },
       ],
-      related: array
-        .filter(item => item.node.id !== service.id)
-        .map(i => ({
-          link: `https://autohof24.ru/services/${i.node.slug}/`,
-          image_url: i.node.img ? i.node.img.file.url : defaultImage,
-          text: i.node.title,
-        })),
     })
     const slug = service.slug
     createPage({

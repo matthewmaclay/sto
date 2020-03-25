@@ -10,6 +10,8 @@ import Phone from '../icons/phone'
 import Map from '../icons/map'
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
+const phoneLinkRef = React.createRef()
+
 const Nav = styled.nav`
   height: ${({ theme, ...props }) =>
     props.absolute ? theme.sizes.menu.absolute : theme.sizes.menu.relative};
@@ -245,6 +247,37 @@ const SLogoLinksWrapper = styled.div`
     }
   }
 `
+const STriangle = styled.span`
+  margin-bottom: -20px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid ${props => props.theme.colors.orange};
+  position: relative;
+  top: 17px;
+  left: 5px;
+  cursor: pointer;
+  animation: phoneTriangle 1s ease-in-out infinite;
+  a {
+    position: absolute;
+  }
+  select {
+    top: -15px;
+    left: -5px;
+    position: absolute;
+    opacity: 0;
+    width: 10px;
+  }
+  @keyframes phoneTriangle {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(2);
+    }
+  }
+`
 const Links = () => (
   <ul>
     <li key={0}>
@@ -278,6 +311,7 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
   const {
     contentfulMainPage: {
       addressString,
+      additionalPhones,
       phone,
       heroImg,
       address: [
@@ -292,6 +326,7 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
         contentfulMainPage {
           addressString
           phone
+          additionalPhones
           heroImg {
             file {
               url
@@ -318,6 +353,23 @@ export const LogoLinks = ({ className, withIcons, big, ...props }) => {
             <a itemProp={!big && 'telephone'} href={`tel:${phone}`}>
               {phone}
             </a>
+            <STriangle>
+              <a ref={phoneLinkRef} href=""></a>
+              <select
+                name="forma"
+                onChange={e => {
+                  console.log(phoneLinkRef.current)
+                  phoneLinkRef.current.href = e.target.value
+                  phoneLinkRef.current.click()
+                }}
+              >
+                {additionalPhones.map(item => (
+                  <option key={item} value={`tel:${item}`}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </STriangle>
           </div>
           <div
             className={`logoLinks__item adress ${
