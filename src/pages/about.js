@@ -17,7 +17,7 @@ const Contact = () => {
           href="https://unpkg.com/swiper/css/swiper.min.css"
         ></link>
       </SEO>
-      <Info titlePage="О нас" />
+      <Info page titlePage="О нас" />
       <Gallery />
     </Layout>
   )
