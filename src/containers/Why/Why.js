@@ -32,7 +32,7 @@ export default function Why() {
         <Card
           icon={<Map />}
           title="Удобное расположение"
-          description="Мы находимся недалеко от такого то места, и этот текст кратко описал в 2 строки"
+          description="Мы находимся в 2 минутах от метро Нарвская"
         />
         <Card
           icon={<Key />}
