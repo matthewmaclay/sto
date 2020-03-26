@@ -55,6 +55,7 @@ const Tabs = props => {
                   url
                 }
               }
+              stars
               slug
               passenger
               offroad
@@ -106,6 +107,7 @@ const Tabs = props => {
                   key={item.node.id}
                   title={item.node.title}
                   cost={item.node[props.carType]}
+                  stars={item.node.stars}
                   description={fromRichTextToText(
                     get(item, 'node.description.description')
                   )}

@@ -35,10 +35,20 @@ const SContent = styled.div`
   b {
     width: 150px;
     font-weight: bold;
+    white-space: nowrap;
+  }
+  .cost {
+    position: relative;
+  }
+  .cost:before {
+    content: attr(data-stars);
+    position: absolute;
+    right: -17px;
+    font-size: 13px;
   }
 `
 /* eslint-disable react/no-unknown-property, no-console */
-const Item = ({ title, cost, slug, img, index, description }) => (
+const Item = ({ title, cost, slug, img, index, stars, description }) => (
   <div
     itemprop="itemListElement"
     itemscope="true"
@@ -69,7 +79,9 @@ const Item = ({ title, cost, slug, img, index, description }) => (
             content="RUB"
           ></span>
           <span itemprop="price" content={cost || 0}></span>
-          <span>{<b>{separateNumbers(cost)}</b>}</span>
+          <span className="cost" data-zalupa="zalupa" data-stars={stars || ''}>
+            {<b>{separateNumbers(cost)}</b>}
+          </span>
         </div>
       </SContent>
     </STitleWrapper>

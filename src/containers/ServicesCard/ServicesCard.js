@@ -135,6 +135,15 @@ const ServicesCard = props => {
             defaultServiceCategory={searchParams.get('serviceCategory')}
             carType={carType}
           />
+          <Text opacity type="14">
+            &nbsp;&nbsp;*&nbsp;&nbsp;&nbsp; – &nbsp;&nbsp;Цена может измениться
+            из-за конструктивных особенностей автомобиля или объема.
+            <br /> &nbsp;**&nbsp;&nbsp; – &nbsp;&nbsp;Цена может измениться
+            из-за конструктивных особенностей автомобиля или объема работ. ( ДВС
+            – бензин, дизель).
+            <br /> ***&nbsp; – &nbsp;&nbsp;Цена может измениться от объема работ
+            или количества форсунок.
+          </Text>
           <Form />
         </Collapse>
       </SWrapper>
