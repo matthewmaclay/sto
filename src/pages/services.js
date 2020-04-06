@@ -17,7 +17,7 @@ const Contact = ({ location }) => {
   return (
     <Layout>
       <SEO
-        title="Все услуги | Autohof24"
+        title="Все услуги"
         description="Вы можете выбрать тип вашего авто и узнать цену услуги"
       >
         <link rel="canonical" href="https://autohof24.ru/services/" />

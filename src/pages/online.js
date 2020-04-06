@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <Layout>
       <SEO
-        title="Запись на сервис | Autohof24"
+        title="Запись на сервис"
         description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
       >
         <link rel="canonical" href="https://autohof24.ru/online/" />
