@@ -105,6 +105,10 @@ const Nav = styled.nav`
     ${media.m} {
       display: none;
     }
+    .phone {
+      height: 38px;
+      display: flex;
+    }
     .logoLinks {
       display: flex;
       flex-direction: column;
@@ -269,14 +273,6 @@ const STriangle = styled.span`
     position: absolute;
     opacity: 0;
     width: 30px;
-  }
-  @keyframes phoneTriangle {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(2);
-    }
   }
 `
 const Links = () => (
