@@ -30,7 +30,8 @@ module.exports = async ({ graphql, actions }) => {
 
   services.forEach((post, i, array) => {
     const service = post.node
-
+    // если услуга заведена как ссылка на категорию не создаем страницу
+    if (service.justLink) return null
     feed.item({
       title: service.title,
       image_url: get(service, 'img.file.url') || defaultImage,

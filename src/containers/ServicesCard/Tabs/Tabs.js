@@ -59,6 +59,7 @@ const Tabs = props => {
               slug
               passenger
               offroad
+              justLink
               description {
                 description
               }
@@ -98,7 +99,10 @@ const Tabs = props => {
           <SItemsWrapper>
             {services
               .filter(
-                item => item.node.type && item.node.type.id === serviceType
+                item =>
+                  !item.node.justLink &&
+                  item.node.type &&
+                  item.node.type.id === serviceType
               )
               .map((item, index) => (
                 <Item

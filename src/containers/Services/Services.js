@@ -37,7 +37,7 @@ export default function Services() {
   } = useStaticQuery(
     graphql`
       query {
-        allContentfulService(filter: { often: { eq: true } }, limit: 8) {
+        allContentfulService(filter: { often: { eq: true } }, limit: 12) {
           edges {
             node {
               id
@@ -47,6 +47,7 @@ export default function Services() {
                 }
               }
               slug
+              justLink
               passenger
               offroad
               description {
@@ -72,7 +73,11 @@ export default function Services() {
         <SGrid>
           {services.map((item, index) => (
             <Item
-              to={`/services/${item.node.slug}/?from=main`}
+              to={
+                item.node.justLink
+                  ? `/services?carType=passenger&serviceCategory=${item.node.type.id}&from=main#tabs`
+                  : `/services/${item.node.slug}/?from=main`
+              }
               key={item.node.id}
               title={item.node.title}
             />

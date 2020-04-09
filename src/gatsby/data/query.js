@@ -16,6 +16,7 @@ module.exports.data = {
           offroad
           bus
           title
+          justLink
           description{
             description
           }
