@@ -33,31 +33,15 @@ const SGrid = styled.div`
 `
 export default function Services() {
   const {
-    allContentfulService: { edges: services },
+    allContentfulServiceCategory: { edges: categories },
   } = useStaticQuery(
     graphql`
       query {
-        allContentfulService(filter: { often: { eq: true } }, limit: 12) {
+        allContentfulServiceCategory(limit: 12) {
           edges {
             node {
               id
-              img {
-                file {
-                  url
-                }
-              }
-              slug
-              justLink
-              passenger
-              offroad
-              description {
-                description
-              }
-              bus
               title
-              type {
-                id
-              }
             }
           }
         }
@@ -71,13 +55,9 @@ export default function Services() {
       </Heading>
       <SWrapper>
         <SGrid>
-          {services.map((item, index) => (
+          {categories.map((item, index) => (
             <Item
-              to={
-                item.node.justLink
-                  ? `/services?carType=passenger&serviceCategory=${item.node.type.id}&from=main#tabs`
-                  : `/services/${item.node.slug}/?from=main`
-              }
+              to={`/services?carType=passenger&serviceCategory=${item.node.id}&from=main#tabs`}
               key={item.node.id}
               title={item.node.title}
             />
