@@ -5,7 +5,6 @@ import ServicePage from 'containers/ServicePage'
 import { titlePosfix } from 'utils/common'
 
 const ServiceTemplate = ({ data: { contentfulService } }) => {
-  console.log(contentfulService)
   return (
     <Layout>
       <SEO

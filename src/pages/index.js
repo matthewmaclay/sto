@@ -28,7 +28,7 @@ const Contact = ({
     <Layout absoluteNav>
       <SEO
         title="Автосервис на Нарвской"
-        description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
+        description="Комплексное обслуживание автомобилей по доступным ценам!"
       >
         <link rel="canonical" href={siteUrl} />
         <link

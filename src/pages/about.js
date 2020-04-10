@@ -9,7 +9,7 @@ const Contact = () => {
     <Layout>
       <SEO
         title="О нас"
-        description="У нас вы можете пройти ТО, поменять шины или покрасить корпус"
+        description="Комплексное обслуживание автомобилей по доступным ценам!"
       >
         <link rel="canonical" href="https://autohof24.ru/about/" />
         <link
