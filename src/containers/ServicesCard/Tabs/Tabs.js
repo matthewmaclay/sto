@@ -25,9 +25,6 @@ const STabsWrapper = styled.div`
   overflow: scroll;
   display: flex;
   white-space: nowrap;
-  ${media.s} {
-    justify-content: center;
-  }
 `
 
 const Tabs = props => {

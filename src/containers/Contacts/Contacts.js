@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Section from 'components/Section'
-import { LogoLinks } from 'components/Menu'
+import Menu from 'components/Menu'
 import Heading from 'components/Heading'
 import styled from '@emotion/styled'
 import media from 'utils/media'
-import debounce from 'lodash.debounce'
-import throttle from 'lodash.throttle'
 import { useStaticQuery, graphql } from 'gatsby'
 import { YMaps, Map, Placemark } from 'react-yandex-maps'
 
@@ -86,7 +84,7 @@ const Contacts = props => {
               Как добраться
             </Heading>
           )}
-          <LogoLinks big withIcons></LogoLinks>
+          <Menu.LogoLinks big withIcons></Menu.LogoLinks>
         </SContactsWrapper>
       </SWrapper>
     </Section>
@@ -94,35 +92,3 @@ const Contacts = props => {
 }
 
 export default Contacts
-const features = [
-  {
-    type: 'Feature',
-    id: 'id1',
-    geometry: {
-      type: 'Point',
-      coordinates: [59.907613, 30.276261],
-    },
-    properties: {
-      hintContent: 'Главный офис',
-      balloonContent:
-        'Главный офис: Россия, Санкт-Петербург, Старо-Петергофский проспект, 20к3 лит. А',
-    },
-    options: {
-      opacity: 0.2,
-      strokeWidth: 2,
-      fillColor: '#00FF00',
-    },
-  },
-  {
-    type: 'Feature',
-    id: 'id3',
-    geometry: {
-      type: 'Point',
-      coordinates: [59.839014, 30.310173],
-    },
-    properties: {
-      hintContent: 'Автопарк №2',
-      balloonContent: 'Автопарк №2: 5-й Предпортовый проезд 3Б',
-    },
-  },
-]

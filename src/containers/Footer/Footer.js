@@ -1,7 +1,7 @@
 import Section from 'components/Section'
 import { useStaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { LogoLinks } from 'components/Menu'
+import Menu from 'components/Menu'
 import Text from 'components/Text'
 import LogoSVG from 'icons/logo'
 import media from 'utils/media'
@@ -88,7 +88,7 @@ export default function Footer(props) {
           Записаться онлайн
         </Button>
 
-        <LogoLinks big withIcons></LogoLinks>
+        <Menu.LogoLinks big withIcons></Menu.LogoLinks>
       </SInfo>
       <SServices>
         <Collapse>

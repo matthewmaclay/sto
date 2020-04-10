@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import LogoSVG from '../icons/logo'
+import LogoSVG from 'icons/logo'
 import { slide as Slide } from 'react-burger-menu'
 import media from 'utils/media'
 
 /* eslint-disable react/no-unknown-property, no-console */
-import Phone from '../icons/phone'
-import Map from '../icons/map'
+import Phone from 'icons/phone'
+import Map from 'icons/map'
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 const phoneLinkRef = React.createRef()
@@ -442,8 +442,3 @@ const Menu = ({ absolute }) => {
 }
 
 export default Menu
-
-/*
-
-
-*/

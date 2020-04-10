@@ -1,29 +1,42 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Button from 'components/Button'
+import SEO from 'components/SEO'
 import styled from '@emotion/styled'
-import PageTitle from '../components/PageTitle'
-import Container from '../components/Container'
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
+import Layout from 'components/Layout'
 
-const Text = styled.p`
-  text-align: center;
-  line-height: 1.6;
-  a {
-    color: ${props => props.theme.colors.text};
+const SWrapper = styled.div`
+  height: 30vw;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .error {
+    font-size: 100px;
+    color: ${({ theme }) => theme.colors.orange};
+  }
+  .text {
+    margin-bottom: 20px;
   }
 `
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404" description="Page Not Found" />
-    <Container>
-      <PageTitle>Page Not Found</PageTitle>
-      <Text>
-        Please return <Link to="/">home</Link> or use the menu to navigate to a
-        different page.
-      </Text>
-    </Container>
+    <SEO
+      title="Страница не найдена"
+      description="Комплексное обслуживание автомобилей по доступным ценам!"
+    ></SEO>
+
+    <SWrapper>
+      <p className="error">404</p>
+      <p className="text">Похоже, мы не можем найти нужную вам страницу.</p>
+
+      <Button className="mb60" style="black" link to="/?from=404">
+        На главную
+      </Button>
+    </SWrapper>
   </Layout>
 )
 

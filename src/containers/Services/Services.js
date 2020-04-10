@@ -37,7 +37,10 @@ export default function Services() {
   } = useStaticQuery(
     graphql`
       query {
-        allContentfulServiceCategory(limit: 12) {
+        allContentfulServiceCategory(
+          limit: 12
+          filter: { title: { ne: null } }
+        ) {
           edges {
             node {
               id

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import styled from '@emotion/styled'
 import { Global } from '@emotion/core'
-import Menu from '../components/Menu'
+import Menu from 'components/Menu'
 import Footer from 'containers/Footer'
-import { globalStyles } from '../styles/globalStyles.js'
+import { globalStyles } from 'styles/globalStyles.js'
 import { useStaticQuery, graphql } from 'gatsby'
 import { YMInitializer } from 'react-yandex-metrika'
 
@@ -61,7 +61,7 @@ const Layout = props => {
         <meta itemprop="serviceType" content="Автосервис" />
 
         <div className="siteContent">
-          <Menu absolute={props.absoluteNav} />
+          <Menu.default absolute={props.absoluteNav} />
           <div id="main">{props.children}</div>
         </div>
         <Footer />

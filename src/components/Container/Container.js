@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 
 const Wrapper = styled.section`
   margin: 0 auto auto;
-	padding: 0 ${props => props.theme.sizes.containerPadding};
+  padding: 0 ${props => props.theme.sizes.containerPadding};
   width: 100%;
   max-width: ${props => props.theme.sizes.maxWidth};
   flex-grow: 1;
