@@ -1,5 +1,0 @@
-[[plugins]]
-package = "netlify-deployment-hours-plugin"
-
-[[plugins]]
-package = "netlify-plugin-gatsby-cache"
