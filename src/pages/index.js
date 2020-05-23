@@ -7,6 +7,7 @@ import Button from 'components/Button'
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 
 import Why from 'containers/Why'
+import Hire from 'containers/Hire'
 import Hero from 'containers/Hero'
 import Info from 'containers/Info'
 import Services from 'containers/Services'
@@ -63,6 +64,7 @@ const Contact = ({
         </AnchorLink>
       </Hero>
       <Why />
+      <Hire />
       <Services />
       <Info />
       <Gallery />

@@ -20,6 +20,22 @@ const SWrapper = styled(Link)`
   margin: auto;
   text-decoration: none;
   color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  ${({ highlight }) =>
+    highlight &&
+    `
+    &:before {
+    content: ' ';
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    background:linear-gradient(95deg, #CC2515 10.98%, #F17E01 89.02%);
+    top: 0;
+    left: -55px;
+    transform: rotate(-35deg);
+  }
+  `}
 
   @media screen and (min-width: 564px) {
     margin: 0;
@@ -56,9 +72,9 @@ const SWrapper = styled(Link)`
   }
 `
 
-export default function Item({ title, to }) {
+export default function Item({ title, to, highlight }) {
   return (
-    <SWrapper to={to}>
+    <SWrapper highlight={highlight} to={to}>
       <Text opacity type="20">
         {title}
       </Text>

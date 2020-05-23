@@ -45,12 +45,14 @@ export default function Services() {
             node {
               id
               title
+              highlight
             }
           }
         }
       }
     `
   )
+  console.log(categories)
   return (
     <Section black>
       <Heading white center type="h2">
@@ -63,6 +65,7 @@ export default function Services() {
               to={`/services?carType=passenger&serviceCategory=${item.node.id}&from=main#tabs`}
               key={item.node.id}
               title={item.node.title}
+              highlight={item.node.highlight}
             />
           ))}
         </SGrid>
