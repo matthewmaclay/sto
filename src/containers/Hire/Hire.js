@@ -31,8 +31,8 @@ export default function Why() {
         Нам нужны
       </Heading>
       <SWrapper>
-        <Card icon={<Mechanic />} title="Слесарь ремонтник" />
-        <Card icon={<HandHolding />} title="Мастер приемщик" />
+        <Card icon={<Mechanic />} title="Слесарь по ремонту автомобилей " />
+        <Card icon={<HandHolding />} title="Мастер-приемщик" />
       </SWrapper>
     </Section>
   )

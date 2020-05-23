@@ -52,7 +52,6 @@ export default function Services() {
       }
     `
   )
-  console.log(categories)
   return (
     <Section black>
       <Heading white center type="h2">
