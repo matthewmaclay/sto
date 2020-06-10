@@ -116,7 +116,7 @@ const ServicesCard = props => {
               icon={<OffroadCar />}
               setCarType={setCarType}
             >
-              Внедородные паркетники
+              Внедорожные паркетники
             </CarCard>
             <CarCard
               activeType={carType}

@@ -149,7 +149,7 @@ const ServicePage = ({ title, description, bus, passenger, offroad, img }) => {
                   activeBg="rgba(242, 179, 97, 0.1);"
                   icon={<OffroadCar />}
                 >
-                  Внедородные паркетники
+                  Внедорожные паркетники
                 </CarCard>
                 <CarCard
                   price={bus}
