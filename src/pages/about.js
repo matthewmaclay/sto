@@ -14,7 +14,7 @@ const Contact = () => {
         <link rel="canonical" href="https://autohof24.ru/about/" />
         <link
           rel="stylesheet"
-          href="https://unpkg.com/swiper/css/swiper.min.css"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css"
         ></link>
       </SEO>
       <Info page titlePage="О нас" />
